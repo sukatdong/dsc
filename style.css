@@ -1,6 +1,8 @@
 :root {
     --color-primary: #007bff; /* Biru */
-    --color-success: #28a745; /* Hijau Buku Panduan/Alert Success */
+    --color-success: #28a745; /* Hijau Buku Panduan/Disetujui */
+    --color-danger: #dc3545;  /* Merah Ditolak/Hapus */
+    --color-view-btn: #6f42c1; /* Ungu untuk tombol View */
     --color-bg: #f8f9fa;
     --color-text: #212529;
 }
@@ -18,31 +20,34 @@ body {
 /* 1. Header Atas */
 .navbar-top {
     background-color: var(--color-primary); 
-    border-bottom: 3px solid var(--color-success); 
+    border-bottom: 3px solid var(--color-success); /* Strip Hijau di bawah navbar */
     padding-left: 0;
 }
 .header-color-strip {
     background-color: var(--color-success); 
     width: 20px;
-    height: 54px; 
+    height: 54px; /* Sesuaikan tinggi navbar */
     margin-right: 15px;
 }
 .navbar-brand {
     color: #fff !important;
     font-weight: 600;
 }
-.main-title {
-    font-weight: 600;
-}
-
-/* Tombol Panduan */
 .btn-panduan {
     background-color: var(--color-success) !important;
     border-color: var(--color-success) !important;
     font-weight: 500;
 }
 
-/* 2. Tab Navigasi Horizontal */
+/* 2. Judul dan Subtitle */
+.main-title {
+    font-weight: 600;
+}
+.subtitle {
+    margin-top: -5px;
+}
+
+/* 3. Tab Navigasi Horizontal */
 .custom-tabs {
     border-bottom: 1px solid #dee2e6;
 }
@@ -65,48 +70,90 @@ body {
     border-bottom: 1px solid #fff;
 }
 
-/* 3. Konten Utama & Formulir */
+/* 4. Konten Utama & Tabel */
 .card {
     border-radius: 4px;
     border: 1px solid #dee2e6;
 }
 
-.form-label-custom {
-    font-size: 1rem;
-    font-weight: 500;
-    margin-bottom: 5px;
-    display: block;
-}
-
-.form-control {
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    padding: 10px;
-    font-size: 1rem;
-}
-.form-control:focus {
-    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
-    border-color: var(--color-primary);
-}
-
-textarea.form-control {
-    resize: vertical;
-}
-
-/* Alert Status Upload */
-.alert-success {
-    background-color: #d4edda;
-    color: #155724;
-    border-color: #c3e6cb;
-}
-
-/* Tombol Upload */
-.btn-upload {
+.add-data-btn {
     background-color: var(--color-primary) !important;
     border-color: var(--color-primary) !important;
-    font-weight: 600;
-    padding: 10px 20px;
-}
-.btn-secondary {
+    font-size: 0.9rem;
     font-weight: 500;
+}
+
+.search-box input {
+    max-width: 150px;
+    height: 30px;
+}
+
+/* Tabel Riwayat */
+.table-riwayat thead th {
+    font-weight: 500;
+    color: var(--color-text);
+    padding: 1rem 0.75rem;
+    border-bottom: 2px solid #dee2e6;
+    text-align: left;
+    cursor: pointer;
+}
+
+.table-riwayat tbody td {
+    padding: 0.8rem 0.75rem;
+    vertical-align: middle;
+    border-top: 1px solid #f0f0f0;
+    font-size: 0.95rem;
+}
+
+/* Badge Status */
+.status-badge {
+    padding: 0.4em 0.7em;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+}
+.status-disetujui {
+    background-color: var(--color-success);
+    color: #fff;
+}
+.status-ditolak {
+    background-color: var(--color-danger);
+    color: #fff;
+}
+
+/* Tombol Aksi */
+.btn-view {
+    background-color: var(--color-view-btn);
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+.btn-delete {
+    background-color: var(--color-danger);
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    margin-left: 5px;
+}
+
+/* Pagination */
+.pagination-controls {
+    font-size: 0.9rem;
+}
+.pagination-page {
+    background-color: var(--color-primary);
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+    margin: 0 5px;
+}
+.pagination-controls span {
+    cursor: pointer;
 }
