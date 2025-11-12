@@ -154,3 +154,28 @@ body {
 .finished-step:after {
     border-left-color: var(--color-green-header);
 }
+
+
+/* ... (Pastikan kode CSS sebelumnya untuk chevron dan warna sudah ada) ... */
+
+/* Tambahan CSS Khusus untuk Halaman Berkas */
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f7f7f7; /* Sedikit shading untuk baris ganjil */
+}
+.table thead th {
+    font-weight: 600;
+    color: #495057;
+    border-bottom: 2px solid #dee2e6;
+}
+.table tbody td {
+    vertical-align: middle;
+}
+.form-control-sm {
+    max-width: 250px;
+    font-size: 0.85rem;
+}
+.alert-info {
+    background-color: #e0f7ff;
+    color: #0056b3;
+    border-left: 5px solid #007bff;
+}
