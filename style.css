@@ -137,3 +137,20 @@ body {
     background-color: var(--color-green-header) !important;
     border-color: var(--color-green-header) !important;
 }
+
+
+/* ... (CSS sebelumnya tetap sama) ... */
+
+/* Styling Tahapan (Chevron/Panah) - Tambahan Status Selesai */
+
+/* Status Selesai (Finished Step) - Hijau Penuh */
+.finished-step {
+    background-color: var(--color-green-header); /* Hijau */
+    color: #fff;
+    border-color: var(--color-green-header);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.finished-step:after {
+    border-left-color: var(--color-green-header);
+}
