@@ -1,289 +1,106 @@
-/* Palet Warna */
 :root {
-    --color-primary: #007bff; /* Biru Header */
-    --color-green-header: #28a745; /* Hijau Header KP */
-    --color-step-active: #ffc107; /* Kuning Aktif */
-    --color-step-inactive: #f0f0f0; /* Putih/Abu-abu Langkah Inaktif */
-    --color-text: #343a40;
-}
-
-body {
-    background-color: #f8f9fa;
-    color: var(--color-text);
-}
-
-/* 1. Header Atas */
-.navbar-top {
-    background: linear-gradient(to right, #007bff, #0056b3); /* Gradasi Biru */
-    border-bottom: 5px solid #0056b3;
-}
-.navbar-top .navbar-brand {
-    font-weight: 600;
-}
-.profile-img {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: #e9ecef; /* Placeholder image */
-    border: 2px solid #fff;
-    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="%23495057" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>');
-}
-.navbar-top .fw-bold {
-    color: var(--color-text); /* Teks Profil */
-    font-size: 0.9rem;
-}
-
-
-/* 2. Header KP Hijau */
-.header-kp {
-    background-color: var(--color-green-header);
-    color: #fff;
-    font-size: 1.5rem;
-    font-weight: 500;
-    padding: 10px 20px;
-    width: fit-content;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-/* 3. Styling Tahapan (Chevron/Panah) */
-.process-flow {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.step {
-    position: relative;
-    padding: 12px 30px 12px 18px;
-    margin-right: 15px; /* Jarak antar panah */
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--color-text);
-    background-color: var(--color-step-inactive);
-    border: 1px solid #ced4da;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-/* Membuat bentuk panah (Chevron) */
-.step:after {
-    content: '';
-    position: absolute;
-    right: -15px; /* Sesuaikan dengan margin-right */
-    top: 0;
-    width: 0;
-    height: 0;
-    border-top: 20px solid transparent; /* Setengah tinggi */
-    border-bottom: 20px solid transparent; /* Setengah tinggi */
-    border-left: 15px solid var(--color-step-inactive); /* Panjang panah */
-    z-index: 1;
-}
-
-/* Menghilangkan panah di step terakhir */
-.step:last-child:after {
-    content: none;
-    border-left: 15px solid transparent;
-}
-
-/* Membuat sisi kiri panah agar terlihat menyambung */
-.step:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 0;
-    height: 0;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-left: 15px solid #f8f9fa; /* Warna background utama */
-    z-index: 2;
-}
-
-/* Mengatur panah pada step aktif */
-.active-step {
-    background-color: var(--color-step-active); /* Kuning */
-    border-color: #ffc107;
-}
-.active-step:after {
-    border-left-color: var(--color-step-active);
-}
-
-/* Mengatur panah pada step inaktif (hijau) */
-.inactive-step {
-    background-color: #e9f5e9; /* Hijau muda */
-    border-color: #c3e6cb;
-}
-.inactive-step:after {
-    border-left-color: #e9f5e9;
-}
-.inactive-step:before {
-    border-left-color: #f8f9fa; /* Pastikan match background */
-}
-
-.step:not(:first-child) {
-    margin-left: 15px; /* Override Bootstrap margin */
-}
-
-/* 4. Konten Dummy */
-.card {
-    border-radius: 8px;
-    border: 1px solid #dee2e6;
-}
-.section-title {
-    font-weight: 600;
-}
-.btn-success {
-    background-color: var(--color-green-header) !important;
-    border-color: var(--color-green-header) !important;
-}
-
-
-/* ... (CSS sebelumnya tetap sama) ... */
-
-/* Styling Tahapan (Chevron/Panah) - Tambahan Status Selesai */
-
-/* Status Selesai (Finished Step) - Hijau Penuh */
-.finished-step {
-    background-color: var(--color-green-header); /* Hijau */
-    color: #fff;
-    border-color: var(--color-green-header);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.finished-step:after {
-    border-left-color: var(--color-green-header);
-}
-
-
-/* ... (Pastikan kode CSS sebelumnya untuk chevron dan warna sudah ada) ... */
-
-/* Tambahan CSS Khusus untuk Halaman Berkas */
-.table-striped tbody tr:nth-of-type(odd) {
-    background-color: #f7f7f7; /* Sedikit shading untuk baris ganjil */
-}
-.table thead th {
-    font-weight: 600;
-    color: #495057;
-    border-bottom: 2px solid #dee2e6;
-}
-.table tbody td {
-    vertical-align: middle;
-}
-.form-control-sm {
-    max-width: 250px;
-    font-size: 0.85rem;
-}
-.alert-info {
-    background-color: #e0f7ff;
-    color: #0056b3;
-    border-left: 5px solid #007bff;
-}
-
-/* Pastikan CSS untuk tahapan (chevron) dan tombol sudah ada di file ini. */
-
-/* Tambahan CSS Khusus untuk Halaman Laporan */
-.table-bordered th, .table-bordered td {
-    border-color: #dee2e6 !important;
-}
-.table-secondary {
-    background-color: #e9ecef !important;
-    color: #343a40;
-}
-.form-control-sm {
-    max-width: 250px;
-    font-size: 0.85rem;
-}
-.alert-warning {
-    background-color: #fff3cd;
-    color: #664d03;
-    border-left: 5px solid #ffc107;
-}
-.badge {
-    padding: 0.5em 0.75em;
-    font-size: 0.8em;
-}
-
-:root {
+    --color-primary: #007bff; /* Biru */
+    --color-success: #28a745; /* Hijau Buku Panduan */
+    --color-view-btn: #6f42c1; /* Ungu untuk tombol View */
+    --color-bg: #f8f9fa;
     --color-text: #212529;
-    --color-border: #dee2e6;
-    --color-bg: #ffffff;
 }
 
 body {
-    background-color: #f8f9fa; /* Latar belakang abu-abu muda */
+    background-color: var(--color-bg);
     font-family: Arial, sans-serif;
     color: var(--color-text);
 }
 
-/* 1. Styling Informasi Kelompok (Header) */
-.info-table {
-    width: 100%;
-    border-collapse: collapse;
+.content-container {
+    max-width: 1200px; /* Batasi lebar agar tabel tidak terlalu lebar */
 }
 
-.info-table tr td {
-    padding: 3px 0;
-    font-size: 1rem;
-    vertical-align: top;
-}
-
-.info-table .info-label {
-    width: 120px; /* Lebar tetap untuk label */
-    font-weight: 500;
-}
-
-.info-table .info-separator {
-    width: 10px; /* Lebar pemisah ":" */
-}
-
-.info-table .info-value {
-    font-weight: 400;
-}
-
-/* 2. Judul Tabel */
-.table-title {
-    font-weight: 500;
-    font-size: 1.5rem;
-    border-bottom: 2px solid #ced4da; /* Garis bawah pada judul */
-    padding-bottom: 8px;
-    margin-bottom: 20px !important;
-}
-
-/* 3. Styling Tabel Anggota (Minimalis) */
-.card {
-    border: none;
-    border-radius: 8px;
-    background-color: var(--color-bg);
-}
-
-.table-minimalis {
-    margin-bottom: 0;
-}
-
-/* Header Tabel */
-.table-minimalis thead th {
+/* 1. Header dan Tombol Panduan */
+.main-title {
     font-weight: 600;
+}
+.btn-panduan {
+    background-color: var(--color-success) !important;
+    border-color: var(--color-success) !important;
+    font-weight: 500;
+}
+
+/* 2. Tab Navigasi Horizontal (Sesuai Desain) */
+.custom-tabs {
+    border-bottom: none;
+    flex-wrap: nowrap; /* Mencegah wrap */
+    overflow-x: auto; /* Mengaktifkan scroll horizontal jika terlalu lebar */
+}
+
+.custom-tabs .nav-item {
+    margin-right: 5px;
+}
+
+.custom-tabs .nav-link {
     color: var(--color-text);
-    padding: 1rem 0.75rem;
-    border-bottom: 2px solid var(--color-border);
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-size: 0.95rem;
+    transition: background-color 0.2s, color 0.2s;
+    font-weight: 500;
+}
+
+.custom-tabs .nav-link:hover {
+    background-color: #e9ecef;
+}
+
+.custom-tabs .nav-link.active {
+    color: #fff;
+    background-color: var(--color-primary); /* Warna aktif biru */
+    font-weight: 60    0;
+    border-radius: 4px;
+}
+
+/* 3. Tombol Check In */
+.check-in-btn {
+    background-color: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* 4. Tabel Presensi */
+.table-presensi thead th {
+    font-weight: 400; /* Font tipis di header */
+    color: var(--color-text);
+    border-bottom: 1px solid #dee2e6;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     text-align: left;
 }
 
-/* Isi Tabel */
-.table-minimalis tbody td {
-    padding: 0.75rem 0.75rem;
+.table-presensi tbody td {
+    padding: 0.8rem;
     vertical-align: middle;
-    border-top: 1px solid #f0f0f0; /* Garis horizontal sangat tipis */
+    border-top: 1px solid #f0f0f0;
     font-size: 0.95rem;
 }
 
-.table-minimalis tbody tr:hover {
-    background-color: #f4f4f4; /* Efek hover ringan */
+.check-in-col, .check-out-col {
+    font-weight: 600; /* Waktu lebih tebal */
 }
 
-/* Mengubah case jika diperlukan (opsional, tergantung preferensi visual) */
-.table-minimalis tbody td:nth-child(3) {
-    /* Hanya untuk kolom Nama, jika ingin huruf besar semua seperti di gambar */
-    /* text-transform: uppercase; */ 
+.btn-view {
+    background-color: var(--color-view-btn) !important;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+.btn-view:hover {
+    background-color: #5d369e !important;
+}
+
+/* Mengatur lebar kolom agar lebih proporsional */
+.view-col {
+    width: 10%;
+    text-align: center;
 }
