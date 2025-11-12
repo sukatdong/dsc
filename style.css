@@ -1,134 +1,139 @@
-/* Palet Warna Modern */
+/* Palet Warna */
 :root {
-    --color-primary: #0d6efd;
-    --color-secondary: #6c757d;
-    --color-expired: #dc3545; /* Merah untuk EXPIRED */
-    --color-success: #28a745; /* Hijau untuk Selesai */
-    --color-bg-light: #f8f9fa;
-    --font-family-sans-serif: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --color-primary: #007bff; /* Biru Header */
+    --color-green-header: #28a745; /* Hijau Header KP */
+    --color-step-active: #ffc107; /* Kuning Aktif */
+    --color-step-inactive: #f0f0f0; /* Putih/Abu-abu Langkah Inaktif */
+    --color-text: #343a40;
 }
 
 body {
-    font-family: var(--font-family-sans-serif);
-    background-color: var(--color-bg-light);
+    background-color: #f8f9fa;
+    color: var(--color-text);
 }
 
 /* 1. Header Atas */
 .navbar-top {
-    background-color: var(--color-primary) !important;
-    border-bottom: 3px solid var(--color-primary);
+    background: linear-gradient(to right, #007bff, #0056b3); /* Gradasi Biru */
+    border-bottom: 5px solid #0056b3;
+}
+.navbar-top .navbar-brand {
+    font-weight: 600;
+}
+.profile-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #e9ecef; /* Placeholder image */
+    border: 2px solid #fff;
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="%23495057" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>');
+}
+.navbar-top .fw-bold {
+    color: var(--color-text); /* Teks Profil */
+    font-size: 0.9rem;
 }
 
-/* 2. Judul Utama dan Sub-Section */
-.content-container {
-    padding-top: 20px !important;
+
+/* 2. Header KP Hijau */
+.header-kp {
+    background-color: var(--color-green-header);
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 10px 20px;
+    width: fit-content;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* 3. Styling Tahapan (Chevron/Panah) */
+.process-flow {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.step {
+    position: relative;
+    padding: 12px 30px 12px 18px;
+    margin-right: 15px; /* Jarak antar panah */
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-text);
+    background-color: var(--color-step-inactive);
+    border: 1px solid #ced4da;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Membuat bentuk panah (Chevron) */
+.step:after {
+    content: '';
+    position: absolute;
+    right: -15px; /* Sesuaikan dengan margin-right */
+    top: 0;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent; /* Setengah tinggi */
+    border-bottom: 20px solid transparent; /* Setengah tinggi */
+    border-left: 15px solid var(--color-step-inactive); /* Panjang panah */
+    z-index: 1;
+}
+
+/* Menghilangkan panah di step terakhir */
+.step:last-child:after {
+    content: none;
+    border-left: 15px solid transparent;
+}
+
+/* Membuat sisi kiri panah agar terlihat menyambung */
+.step:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 15px solid #f8f9fa; /* Warna background utama */
+    z-index: 2;
+}
+
+/* Mengatur panah pada step aktif */
+.active-step {
+    background-color: var(--color-step-active); /* Kuning */
+    border-color: #ffc107;
+}
+.active-step:after {
+    border-left-color: var(--color-step-active);
+}
+
+/* Mengatur panah pada step inaktif (hijau) */
+.inactive-step {
+    background-color: #e9f5e9; /* Hijau muda */
+    border-color: #c3e6cb;
+}
+.inactive-step:after {
+    border-left-color: #e9f5e9;
+}
+.inactive-step:before {
+    border-left-color: #f8f9fa; /* Pastikan match background */
+}
+
+.step:not(:first-child) {
+    margin-left: 15px; /* Override Bootstrap margin */
+}
+
+/* 4. Konten Dummy */
+.card {
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
 }
 .section-title {
     font-weight: 600;
-    color: var(--color-secondary); /* Warna abu-abu yang elegan */
-    margin-bottom: 20px;
 }
-.sub-section-title {
-    font-weight: 500;
-    color: var(--color-text);
-}
-
-
-/* 3. Card Batas Waktu (EXPIRED) - Minimalis & Tegas */
-.deadline-card {
-    background-color: #ffffff;
-    border: 1px solid #e9ecef;
-    border-left: 5px solid var(--color-expired); /* Garis tegas di kiri */
-    border-radius: 8px;
-}
-.deadline-card .deadline-text {
-    font-size: 1.1rem;
-    color: var(--color-secondary);
-}
-.deadline-card .status-expired {
-    font-size: 1.8rem;
-    color: var(--color-expired);
-    letter-spacing: 2px;
-}
-.deadline-card .card-body {
-    padding: 1.5rem 2rem !important;
-}
-
-
-/* 4. Tombol Aksi KP (Bimbingan & Log Book) */
-.btn-action-kp {
-    font-size: 0.9rem;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-}
-.btn-action-kp-active {
-    font-size: 0.9rem;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    background-color: var(--color-primary) !important;
-    border-color: var(--color-primary) !important;
-}
-
-
-/* 5. Tabel Riwayat Pengajuan - Minimalis */
-.table-minimalis {
-    border: none;
-    border-collapse: separate;
-}
-
-.table-minimalis thead th {
-    font-weight: 600;
-    color: var(--color-secondary);
-    border-bottom: 2px solid #dee2e6;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-}
-
-.table-minimalis tbody td {
-    vertical-align: middle;
-    padding: 1rem 0.5rem;
-    border-top: 1px solid #f0f0f0;
-}
-
-.instansi-name {
-    color: var(--color-primary);
-}
-.instansi-address {
-    font-size: 0.85rem;
-    color: #6c757d;
-}
-
-/* Badge Status */
-.status-badge {
-    padding: 0.35em 0.65em;
-    border-radius: 50rem;
-    font-weight: 600;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-}
-.status-selesai {
-    background-color: var(--color-success);
-    color: #fff;
-}
-
-/* Tombol Detail */
-.btn-detail {
-    background-color: var(--color-primary);
-    color: #fff;
-    border-radius: 50rem;
-    padding: 0.25rem 0.75rem;
-    font-size: 0.8rem;
-    transition: background-color 0.2s;
-}
-.btn-detail:hover {
-    background-color: #0056b3;
-    color: #fff;
-}
-
-
-/* 6. Footer */
-.footer-info {
-    color: #adb5bd;
+.btn-success {
+    background-color: var(--color-green-header) !important;
+    border-color: var(--color-green-header) !important;
 }

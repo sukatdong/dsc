@@ -3,85 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akademik - Riwayat Pengajuan KP</title>
+    <title>Portal Mahasiswa - Kerka Praktik</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
 
-    <nav class="navbar navbar-dark bg-primary navbar-top">
+    <nav class="navbar navbar-top">
         <div class="container-fluid">
-            <a class="navbar-brand ms-3" href="#"><i class="fa-solid fa-bars me-3"></i> Portal Mahasiswa</a>
+            <a class="navbar-brand text-white ms-3" href="#"><i class="fa-solid fa-bars me-3"></i> Portal Mahasiswa</a>
+            <div class="d-flex align-items-center me-3">
+                <img src="placeholder_profile.jpg" alt="Profile" class="profile-img me-2">
+                <span class="text-dark fw-bold">Vicha Dorena Br Tarigan - 12420003</span>
+            </div>
         </div>
     </nav>
 
     <div class="container-fluid content-container p-4">
 
-        <h2 class="section-title mb-4">Akademik</h2>
+        <div class="header-kp mb-5">
+            • Kerka Praktik (KP)
+        </div>
 
-        <div class="card deadline-card shadow-sm mb-5">
-            <div class="card-body p-4">
-                <div class="row align-items-center">
-                    <div class="col-md-8">
-                        <p class="deadline-text mb-0">Batas Waktu Pelaksanaan Kerja Praktik - **16 Februari 2024**</p>
-                    </div>
-                    <div class="col-md-4 text-md-end text-center mt-3 mt-md-0">
-                        <span class="status-expired fw-bold">
-                            <i class="fa-solid fa-hourglass-end me-2"></i> EXPIRED
-                        </span>
+        <div class="process-flow d-flex justify-content-start flex-wrap mb-5">
+            <div class="step active-step">Pengajuan</div>
+            <div class="step inactive-step">Data Instansi</div>
+            <div class="step inactive-step">Berkas</div>
+            <div class="step inactive-step">Laporan</div>
+        </div>
+
+        <div class="card p-4 shadow-sm">
+            <h4 class="mb-4 text-primary">Formulir Pengajuan Awal KP</h4>
+            <p class="text-muted">Lengkapi data berikut untuk memulai proses Kerja Praktik Anda.</p>
+            
+            <form>
+                <div class="mb-3">
+                    <label for="nim" class="form-label">Nomor Induk Mahasiswa (NIM)</label>
+                    <input type="text" class="form-control" id="nim" value="12420003" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="nama" class="form-label">Nama Lengkap</label>
+                    <input type="text" class="form-control" id="nama" value="Vicha Dorena Br Tarigan" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="semester" class="form-label">Semester Saat Pengajuan</label>
+                    <select class="form-select" id="semester">
+                        <option selected>Pilih Semester</option>
+                        <option value="5">Semester 5</option>
+                        <option value="6">Semester 6</option>
+                        <option value="7">Semester 7</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="prasyarat" class="form-label">Telah Memenuhi Minimal SKS Prasyarat (mis. 100 SKS)?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="sks_check">
+                        <label class="form-check-label" for="sks_check">
+                            Ya, saya telah mencapai SKS minimum.
+                        </label>
                     </div>
                 </div>
-            </div>
-        </div>
+                <div class="mb-4">
+                    <label for="topik" class="form-label">Rencana Topik/Fokus KP</label>
+                    <textarea class="form-control" id="topik" rows="3" placeholder="Contoh: Pengembangan UI/UX Aplikasi Mobile"></textarea>
+                </div>
 
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h4 class="sub-section-title mb-0">Riwayat Pengajuan Kerja Praktik</h4>
-            <div class="btn-group" role="group">
-                <button type="button" class="btn btn-outline-primary btn-action-kp">
-                    <i class="fa-solid fa-chalkboard-user me-1"></i> Bimbingan KP
-                </button>
-                <button type="button" class="btn btn-primary btn-action-kp-active">
-                    <i class="fa-solid fa-book-open-reader me-1"></i> Log Book Harian Kerja Praktik
-                </button>
-            </div>
+                <button type="submit" class="btn btn-success me-2">Lanjutkan ke Data Instansi</button>
+                <button type="button" class="btn btn-secondary">Simpan Draft</button>
+            </form>
         </div>
-
-        <div class="card shadow-sm p-3">
-            <div class="table-responsive">
-                <table class="table table-hover table-minimalis">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Nama Instansi</th>
-                            <th>Alamat Instansi</th>
-                            <th>Tanggal Mulai</th>
-                            <th>Tanggal Selesai</th>
-                            <th>Status</th>
-                            <th>Detail</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td class="instansi-name fw-semibold">Yayasan Dicoding Indonesia</td>
-                            <td class="instansi-address">Dicoding Space, Jalan Batik Kumeli No. 50, Kecamatan : Cibeunying Kaler, Kelurahan : Sukajuyu, RT : 10, RW : 07, Kota Bandung, Jawa Barat, 40123</td>
-                            <td>16 Februari 2023</td>
-                            <td>31 Juli 2023</td>
-                            <td><span class="badge status-badge status-selesai">Selesai</span></td>
-                            <td>
-                                <button class="btn btn-sm btn-detail">Detail</button>
-                            </td>
-                        </tr>
-                        </tbody>
-                </table>
-            </div>
         </div>
-
-        <div class="footer-info mt-5 pt-4 text-secondary small">
-            Pusat Kajian Teknologi Informasi UPN 'VETERAN' Yogyakarta.
-        </div>
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
