@@ -203,3 +203,87 @@ body {
     padding: 0.5em 0.75em;
     font-size: 0.8em;
 }
+
+:root {
+    --color-text: #212529;
+    --color-border: #dee2e6;
+    --color-bg: #ffffff;
+}
+
+body {
+    background-color: #f8f9fa; /* Latar belakang abu-abu muda */
+    font-family: Arial, sans-serif;
+    color: var(--color-text);
+}
+
+/* 1. Styling Informasi Kelompok (Header) */
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.info-table tr td {
+    padding: 3px 0;
+    font-size: 1rem;
+    vertical-align: top;
+}
+
+.info-table .info-label {
+    width: 120px; /* Lebar tetap untuk label */
+    font-weight: 500;
+}
+
+.info-table .info-separator {
+    width: 10px; /* Lebar pemisah ":" */
+}
+
+.info-table .info-value {
+    font-weight: 400;
+}
+
+/* 2. Judul Tabel */
+.table-title {
+    font-weight: 500;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #ced4da; /* Garis bawah pada judul */
+    padding-bottom: 8px;
+    margin-bottom: 20px !important;
+}
+
+/* 3. Styling Tabel Anggota (Minimalis) */
+.card {
+    border: none;
+    border-radius: 8px;
+    background-color: var(--color-bg);
+}
+
+.table-minimalis {
+    margin-bottom: 0;
+}
+
+/* Header Tabel */
+.table-minimalis thead th {
+    font-weight: 600;
+    color: var(--color-text);
+    padding: 1rem 0.75rem;
+    border-bottom: 2px solid var(--color-border);
+    text-align: left;
+}
+
+/* Isi Tabel */
+.table-minimalis tbody td {
+    padding: 0.75rem 0.75rem;
+    vertical-align: middle;
+    border-top: 1px solid #f0f0f0; /* Garis horizontal sangat tipis */
+    font-size: 0.95rem;
+}
+
+.table-minimalis tbody tr:hover {
+    background-color: #f4f4f4; /* Efek hover ringan */
+}
+
+/* Mengubah case jika diperlukan (opsional, tergantung preferensi visual) */
+.table-minimalis tbody td:nth-child(3) {
+    /* Hanya untuk kolom Nama, jika ingin huruf besar semua seperti di gambar */
+    /* text-transform: uppercase; */ 
+}

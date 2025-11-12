@@ -3,92 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Mahasiswa - Laporan KP</title>
+    <title>Informasi Kelompok KKN</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
 
-    <nav class="navbar navbar-top">
-        <div class="container-fluid">
-            <a class="navbar-brand text-white ms-3" href="#"><i class="fa-solid fa-bars me-3"></i> Portal Mahasiswa</a>
-            <div class="d-flex align-items-center me-3">
-                <img src="placeholder_profile.jpg" alt="Profile" class="profile-img me-2">
-                <span class="text-dark fw-bold">Vicha Dorena Br Tarigan - 12420003</span>
-            </div>
-        </div>
-    </nav>
-
     <div class="container-fluid content-container p-4">
 
-        <div class="header-kp mb-5">
-            • Kerka Praktik (KP)
+        <div class="info-group mb-5">
+            <table class="info-table">
+                <tr>
+                    <td class="info-label">Nama Kelompok</td>
+                    <td class="info-separator">:</td>
+                    <td class="info-value">AA.80.049.WSB</td>
+                </tr>
+                <tr>
+                    <td class="info-label">DPL</td>
+                    <td class="info-separator">:</td>
+                    <td class="info-value">HUMAM SANTOSO UTOMO</td>
+                </tr>
+                <tr>
+                    <td class="info-label">Lokasi</td>
+                    <td class="info-separator">:</td>
+                    <td class="info-value">Dusun Gondang, Desa Sendangsari, Kec. Garung, Kab. Wonosobo, Prop. Jawa Tengah</td>
+                </tr>
+            </table>
         </div>
 
-        <div class="process-flow d-flex justify-content-start flex-wrap mb-5">
-            <div class="step finished-step">Pengajuan</div> 
-            <div class="step finished-step">Data Instansi</div> 
-            <div class="step finished-step">Berkas</div>
-            <div class="step active-step">Laporan</div>
-        </div>
+        <h4 class="table-title mb-3">Anggota Kelompok</h4>
 
-        <div class="card p-4 shadow-sm">
-            <h4 class="mb-4 text-primary">Pengunggahan dan Status Laporan Akhir KP (Tahap 4 dari 4)</h4>
-            <p class="text-muted">Harap unggah Laporan Akhir KP yang sudah disetujui Dosen Pembimbing Lapangan dan Dosen Pembimbing Akademik.</p>
-            
-            <form>
-                <table class="table table-bordered">
+        <div class="card shadow-sm p-3">
+            <div class="table-responsive">
+                <table class="table table-minimalis">
                     <thead>
-                        <tr class="table-secondary">
-                            <th>Dokumen</th>
-                            <th>Status Verifikasi</th>
-                            <th>Tanggal Unggah</th>
-                            <th>Aksi</th>
+                        <tr>
+                            <th>No</th>
+                            <th>NIM</th>
+                            <th>Nama</th>
+                            <th>Fakultas</th>
+                            <th>Jurusan</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>**Laporan Akhir KP (Versi Final)**</td>
-                            <td><span class="badge bg-warning text-dark"><i class="fa-solid fa-hourglass-half me-1"></i> Menunggu Koreksi Dosen</span></td>
-                            <td>10 November 2025</td>
-                            <td>
-                                <button type="button" class="btn btn-sm btn-outline-secondary me-2"><i class="fa-solid fa-eye"></i> Lihat</button>
-                                <input class="form-control form-control-sm d-inline-block" style="max-width: 150px;" type="file" accept=".pdf">
-                            </td>
+                            <td>1</td>
+                            <td>123200037</td>
+                            <td>Hartanto Dwi Putra Sembiring</td>
+                            <td>Informatika</td>
+                            <td>Fakultas Teknik Industri</td>
                         </tr>
                         <tr>
-                            <td>**Lembar Pengesahan (Scan TTD Asli)**</td>
-                            <td><span class="badge bg-success"><i class="fa-solid fa-check me-1"></i> Disetujui</span></td>
-                            <td>08 November 2025</td>
-                            <td>
-                                <button type="button" class="btn btn-sm btn-success me-2"><i class="fa-solid fa-download"></i> Unduh</button>
-                            </td>
+                            <td>2</td>
+                            <td>154200078</td>
+                            <td>VITO ALFA MUHVIANTO</td>
+                            <td>Hubungan Masyarakat</td>
+                            <td>Fakultas Ilmu Sosial Dan Ilmu Politik</td>
                         </tr>
                         <tr>
-                            <td>**Nilai dari Instansi (Surat Keterangan)**</td>
-                            <td><span class="badge bg-danger"><i class="fa-solid fa-times me-1"></i> Ditolak</span></td>
-                            <td>-</td>
-                            <td>
-                                <p class="text-danger small mb-0">Revisi: Tanda tangan basah harus ada.</p>
-                                <input class="form-control form-control-sm d-inline-block" style="max-width: 150px;" type="file" accept=".pdf">
-                            </td>
+                            <td>3</td>
+                            <td>143200136</td>
+                            <td>Erni Vidiastuti</td>
+                            <td>Ekonomi Pembangunan</td>
+                            <td>Fakultas Ekonomi Dan Bisnis</td>
                         </tr>
-                    </tbody>
+                        <tr>
+                            <td>4</td>
+                            <td>143200148</td>
+                            <td>Abdullah Miftahulhaq</td>
+                            <td>Ekonomi Pembangunan</td>
+                            <td>Fakultas Ekonomi Dan Bisnis</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>134200128</td>
+                            <td>WAHYU PRADEKA</td>
+                            <td>Agroteknologi</td>
+                            <td>Fakultas Pertanian</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>134200228</td>
+                            <td>Muliawati Rizqy Kusuma</td>
+                            <td>Agroteknologi</td>
+                            <td>Fakultas Pertanian</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>135200049</td>
+                            <td>YUMNA SINTYA ARDHANA</td>
+                            <td>Agribisnis</td>
+                            <td>Fakultas Pertanian</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>133200036</td>
+                            <td>TASHIKA DAMARWANTI</td>
+                            <td>Ilmu Tanah</td>
+                            <td>Fakultas Pertanian</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>134200019</td>
+                            <td>Shella Luthfiah Sinaga</td>
+                            <td>Agroteknologi</td>
+                            <td>Fakultas Pertanian</td>
+                        </tr>
+                        </tbody>
                 </table>
-                
-                <div class="alert alert-warning mt-4">
-                    <i class="fa-solid fa-triangle-exclamation me-2"></i> Pengajuan KP baru dianggap selesai jika **semua berkas laporan berstatus 'Disetujui'** dan Nilai KP telah diinput.
-                </div>
-
-                <hr>
-                <div class="d-flex justify-content-between">
-                    <button type="button" class="btn btn-secondary"><i class="fa-solid fa-arrow-left me-1"></i> Kembali ke Berkas Persyaratan</button>
-                    <button type="button" class="btn btn-primary" disabled><i class="fa-solid fa-paper-plane me-1"></i> Ajukan Nilai Akhir</button>
-                </div>
-            </form>
+            </div>
         </div>
-        </div>
+        
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
