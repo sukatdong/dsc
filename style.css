@@ -1,26 +1,25 @@
 :root {
-    --color-primary: #007bff; /* Biru */
-    --color-success: #28a745; /* Hijau (Tambah Data/Panduan) */
-    --color-danger: #dc3545;  /* Merah (Hapus) */
-    --color-bg: #f8f9fa;
+    --color-primary: #007bff; 
+    --color-success: #28a745; 
+    --color-bg: #f4f7f9; /* Background lebih cerah */
     --color-text: #212529;
+    --border-radius-lg: 8px;
 }
 
 body {
     background-color: var(--color-bg);
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--color-text);
 }
 
 .content-container {
-    max-width: 1200px; 
+    max-width: 1300px; 
 }
 
-/* 1. Header Atas */
+/* 1. Header (Consistency) */
 .navbar-top {
     background-color: var(--color-primary); 
-    border-bottom: 3px solid var(--color-success); /* Strip Hijau di bawah navbar */
-    padding-left: 0;
+    border-bottom: 3px solid var(--color-success);
 }
 .header-color-strip {
     background-color: var(--color-success); 
@@ -32,93 +31,85 @@ body {
     color: #fff !important;
     font-weight: 600;
 }
-.btn-panduan {
-    background-color: var(--color-primary) !important;
-    border-color: var(--color-primary) !important;
-    font-weight: 500;
-}
 
-/* 2. Judul dan Subtitle */
+/* 2. Judul dan Breadcrumb Modern */
 .main-title {
+    font-weight: 700;
+    font-size: 2rem;
+    color: #343a40;
+}
+.custom-breadcrumb .breadcrumb-item a {
+    color: var(--color-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+.custom-breadcrumb .breadcrumb-item.active {
+    color: var(--color-primary);
     font-weight: 600;
-    font-size: 1.8rem;
-}
-.subtitle {
-    margin-top: -5px;
 }
 
-/* 3. Tab Navigasi Horizontal */
-.custom-tabs {
-    border-bottom: 1px solid #dee2e6;
-}
-.custom-tabs .nav-link {
-    color: var(--color-text);
-    background-color: #f0f0f0;
-    border: none;
-    border-radius: 4px 4px 0 0;
-    padding: 10px 15px;
-    font-size: 0.95rem;
-    font-weight: 500;
-    margin-right: 5px;
+/* 3. Konten Utama: Card, Button, Table */
+.card-modern {
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Shadow lebih halus */
 }
 
-.custom-tabs .nav-link.active {
-    color: #fff;
-    background-color: var(--color-primary); /* Biru Aktif */
-    font-weight: 600;
-    border-color: var(--color-primary);
-    border-bottom: 1px solid #fff;
-}
-
-/* 4. Konten Utama SKPI */
-.card {
-    border-radius: 4px;
-    border: 1px solid #dee2e6;
-}
-
-.alert-info {
-    background-color: #e0f7ff;
-    color: #0056b3;
-    border-left: 5px solid #007bff;
-}
-
-.data-section h5 {
-    color: var(--color-text);
-    font-weight: 600;
-    border-bottom: 1px solid #f0f0f0;
-    padding-bottom: 5px;
-}
-
-.btn-sm {
-    font-size: 0.8rem;
-    padding: 5px 10px;
-}
-.btn-success {
-    background-color: var(--color-success) !important;
-    border-color: var(--color-success) !important;
-}
-.btn-danger {
-    background-color: var(--color-danger) !important;
-    border-color: var(--color-danger) !important;
-}
-
-/* Tabel SKPI */
-.table-skpi th {
-    font-weight: 600;
-    background-color: #f7f7f7;
-}
-.table-skpi td {
-    vertical-align: middle;
-    font-size: 0.95rem;
-}
-.table-skpi .badge {
-    font-size: 0.85em;
-    padding: 0.4em 0.7em;
-}
-
-.btn-finalisasi {
+.btn-permohonan {
     background-color: var(--color-primary) !important;
     border-color: var(--color-primary) !important;
+    font-size: 1rem;
     font-weight: 600;
     padding: 10px 20px;
+    border-radius: var(--border-radius-lg);
+    transition: background-color 0.2s;
+}
+.btn-permohonan:hover {
+    background-color: #0056b3 !important;
+}
+
+.alert-modern {
+    border-radius: var(--border-radius-lg);
+    border-left: 5px solid var(--color-primary);
+    background-color: #e9f7ff;
+    color: #0056b3;
+}
+
+/* Tabel Modern */
+.table-modern {
+    border-radius: var(--border-radius-lg);
+    overflow: hidden; /* Memastikan sudut tabel ikut melengkung */
+    margin-bottom: 0;
+}
+.table-modern thead th {
+    font-weight: 600;
+    background-color: #f0f3f6; /* Header tabel abu-abu terang */
+    color: #495057;
+    padding: 1rem;
+    border-bottom: 2px solid #dee2e6;
+}
+.table-modern tbody td {
+    padding: 1rem;
+    font-size: 0.95rem;
+    border-top: 1px solid #f0f0f0;
+}
+.table-modern tbody tr:hover {
+    background-color: #fcfcfc;
+}
+
+/* Badge Status dan Tombol Aksi */
+.status-badge {
+    padding: 0.5em 1em;
+    border-radius: 50rem; /* Pill shape */
+    font-weight: 600;
+    font-size: 0.8em;
+}
+.btn-action {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+    border-radius: 5px;
+}
+
+/* 4. Footer */
+.footer-info {
+    color: #adb5bd;
 }
