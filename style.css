@@ -1,8 +1,8 @@
 :root {
     --color-primary: #007bff;     /* Biru */
-    --color-danger: #dc3545;      /* Merah (Untuk Cuti) */
-    --color-success: #28a745;     /* Hijau (Strip Header/Disetujui) */
+    --color-success: #28a745;     /* Hijau (Strip Header/Success/Button) */
     --color-warning: #ffc107;     /* Kuning (Peringatan/Diproses) */
+    --color-danger: #dc3545;      /* Merah (Ditolak) */
     --color-bg: #f4f7f9;
     --color-text: #212529;
     --border-radius-lg: 8px;
@@ -41,7 +41,7 @@ body {
     color: #343a40;
 }
 .custom-breadcrumb .breadcrumb-item a {
-    color: var(--color-secondary);
+    color: #6c757d;
     text-decoration: none;
     font-size: 0.9rem;
 }
@@ -56,10 +56,10 @@ body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); 
 }
 
-/* Tombol Khusus Cuti */
+/* Tombol Khusus Beasiswa (Hijau) */
 .btn-permohonan {
-    background-color: var(--color-danger) !important;
-    border-color: var(--color-danger) !important;
+    background-color: var(--color-success) !important;
+    border-color: var(--color-success) !important;
     font-size: 1rem;
     font-weight: 600;
     padding: 10px 20px;
@@ -67,15 +67,15 @@ body {
     transition: background-color 0.2s;
 }
 .btn-permohonan:hover {
-    background-color: #c82333 !important;
+    background-color: #1e7e34 !important;
 }
 
-/* Alert Peringatan Cuti */
-.alert-modern.alert-warning {
+/* Alert Info Beasiswa */
+.alert-modern.alert-info {
     border-radius: var(--border-radius-lg);
-    border-left: 5px solid var(--color-warning);
-    background-color: #fffbe6;
-    color: #856404;
+    border-left: 5px solid var(--color-primary);
+    background-color: #e9f7ff;
+    color: #0056b3;
 }
 
 /* Tabel Riwayat */
