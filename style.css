@@ -1,8 +1,6 @@
 :root {
     --color-primary: #007bff; /* Biru */
-    --color-success: #28a745; /* Hijau Buku Panduan/Disetujui */
-    --color-danger: #dc3545;  /* Merah Ditolak/Hapus */
-    --color-view-btn: #6f42c1; /* Ungu untuk tombol View */
+    --color-success: #28a745; /* Hijau Buku Panduan/Save */
     --color-bg: #f8f9fa;
     --color-text: #212529;
 }
@@ -20,26 +18,19 @@ body {
 /* 1. Header Atas */
 .navbar-top {
     background-color: var(--color-primary); 
-    border-bottom: 3px solid #0056b3; 
+    border-bottom: 3px solid var(--color-success); /* Strip Hijau di bawah navbar */
     padding-left: 0;
 }
 .header-color-strip {
-    background-color: var(--color-success); /* Strip Hijau di Kiri */
+    background-color: var(--color-success); 
     width: 20px;
-    height: 54px; /* Sesuaikan tinggi navbar */
+    height: 54px; 
     margin-right: 15px;
 }
 .navbar-brand {
     color: #fff !important;
     font-weight: 600;
 }
-.btn-panduan {
-    background-color: var(--color-success) !important;
-    border-color: var(--color-success) !important;
-    font-weight: 500;
-}
-
-/* 2. Judul dan Subtitle */
 .main-title {
     font-weight: 600;
 }
@@ -47,114 +38,97 @@ body {
     margin-top: -5px;
 }
 
-/* 3. Tab Navigasi Horizontal */
-.custom-tabs {
-    border-bottom: none;
-    flex-wrap: nowrap;
-    overflow-x: auto;
+/* Tombol Panduan */
+.btn-panduan {
+    background-color: var(--color-success) !important;
+    border-color: var(--color-success) !important;
+    font-weight: 500;
 }
 
+/* 2. Tab Navigasi Horizontal */
+.custom-tabs {
+    border-bottom: 1px solid #dee2e6; /* Ada garis tipis di bawah tab */
+}
 .custom-tabs .nav-link {
     color: var(--color-text);
     background-color: #f0f0f0;
     border: none;
-    border-radius: 4px;
+    border-radius: 4px 4px 0 0; /* Hanya di atas */
     padding: 10px 15px;
     font-size: 0.95rem;
     font-weight: 500;
+    margin-right: 5px;
 }
 
 .custom-tabs .nav-link.active {
     color: #fff;
     background-color: var(--color-primary); /* Biru Aktif */
     font-weight: 600;
-    border-radius: 4px;
+    border-color: var(--color-primary);
+    border-bottom: 1px solid #fff; /* Menghilangkan garis bawah tab aktif */
 }
 
-/* 4. Konten Utama & Tabel */
+/* 3. Konten Utama & Formulir */
 .card {
     border-radius: 4px;
     border: 1px solid #dee2e6;
 }
 
-.add-data-btn {
-    background-color: var(--color-primary) !important;
-    border-color: var(--color-primary) !important;
-    font-size: 0.9rem;
+/* Informasi Kelompok (Header Form) */
+.info-table {
+    width: 350px; /* Batasi lebar info */
+    border-collapse: collapse;
+}
+
+.info-table tr td {
+    padding: 3px 0;
+    font-size: 1rem;
+    vertical-align: top;
+}
+
+.info-table .info-label {
+    width: 120px; 
+    font-weight: 400; /* Tidak terlalu tebal */
+}
+.info-table .info-separator {
+    width: 10px;
+    font-weight: 400;
+}
+.info-table .info-value {
+    font-weight: 600; /* Nilai lebih tebal */
+}
+
+/* Styling Input Form */
+.form-label-custom {
+    font-size: 1rem;
     font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
 }
 
-.search-box input {
-    max-width: 150px;
-    height: 30px;
-}
-
-/* Tabel Riwayat */
-.table-riwayat thead th {
-    font-weight: 500;
-    color: var(--color-text);
-    padding: 1rem 0.75rem;
-    border-bottom: 2px solid #dee2e6;
-    text-align: left;
-    cursor: pointer;
-}
-
-.table-riwayat tbody td {
-    padding: 0.8rem 0.75rem;
-    vertical-align: middle;
-    border-top: 1px solid #f0f0f0;
-    font-size: 0.95rem;
-}
-
-/* Badge Status */
-.status-badge {
-    padding: 0.4em 0.7em;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 0.85rem;
-    display: inline-flex;
-    align-items: center;
-}
-.status-disetujui {
-    background-color: var(--color-success);
-    color: #fff;
-}
-.status-ditolak {
-    background-color: var(--color-danger);
-    color: #fff;
-}
-
-/* Tombol Aksi */
-.btn-view {
-    background-color: var(--color-view-btn);
-    color: #fff;
+.form-control {
     border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    font-size: 0.9rem;
+    border-bottom: 1px solid #ced4da; /* Hanya garis bawah */
+    border-radius: 0;
+    padding: 0.5rem 0;
+    font-size: 1rem;
 }
-.btn-delete {
-    background-color: var(--color-danger);
-    color: #fff;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    margin-left: 5px;
+.form-control:focus {
+    box-shadow: none;
+    border-color: var(--color-primary);
 }
 
-/* Pagination */
-.pagination-controls {
-    font-size: 0.9rem;
-}
-.pagination-page {
-    background-color: var(--color-primary);
-    color: #fff;
-    padding: 5px 12px;
+textarea.form-control {
+    border: 1px solid #ced4da; /* Border penuh untuk textarea */
     border-radius: 4px;
-    font-weight: 600;
-    margin: 0 5px;
+    padding: 10px;
+    resize: vertical;
 }
-.pagination-controls span {
-    cursor: pointer;
+
+/* Tombol Save */
+.btn-save {
+    background-color: var(--color-success) !important;
+    border-color: var(--color-success) !important;
+    font-weight: 600;
+    padding: 10px 20px;
 }
