@@ -1,106 +1,121 @@
+/* Palet Warna Hijau-Kuning dari image_630ff9.png */
 :root {
-    --sidebar-width: 250px;
-    --primary-blue: #0d6efd; /* Warna Navbar Atas */
-    --pink-card: #e83e8c; /* Card Akademik */
-    --blue-card: #007bff; /* Card Administrasi */
-    --green-card: #28a745; /* Card Kemahasiswaan (dibuat lebih muda) */
-    --purple-card: #6f42c1; /* Card Perpustakaan */
+    --light-yellow: #FFFFC2;   /* Background utama */
+    --light-green: #B9D19E;    /* Aksen Sidebar Kanan Header */
+    --medium-green: #6C8B56;   /* Sidebar Kanan Item Aktif */
+    --dark-green: #304225;     /* Sidebar Kiri Background */
+    --text-primary: #343a40;   /* Warna teks Form */
+    --sidebar-kiri-width: 280px;
 }
 
-/* Pengaturan Sidebar */
+/* 1. Pengaturan Layout Utama */
 #wrapper {
     overflow-x: hidden;
+    background-color: var(--light-yellow); /* Background konten utama */
 }
 
-#sidebar-wrapper {
+/* Sidebar Kiri (Area Profil) */
+.sidebar-kiri {
     min-height: 100vh;
-    margin-left: -15rem; /* Sembunyikan default (opsional) */
-    width: var(--sidebar-width);
+    width: var(--sidebar-kiri-width);
     position: fixed;
-    transition: margin 0.25s ease-out;
-    background-color: #343a40 !important; /* Latar Belakang Sidebar (Dark) */
+    background-color: var(--dark-green) !important; 
     color: #fff;
-    z-index: 1000;
+    padding: 0;
 }
 
 #page-content-wrapper {
-    min-width: 100vw;
-    margin-left: var(--sidebar-width);
+    min-width: calc(100vw - var(--sidebar-kiri-width));
+    margin-left: var(--sidebar-kiri-width);
     padding-left: 0;
+    background-color: var(--light-yellow) !important;
 }
 
-/* Tampilkan Sidebar Secara Default (untuk desain desktop) */
-#wrapper.toggled #sidebar-wrapper {
-    margin-left: 0;
+/* Styling Area Profil */
+.profile-header {
+    background-color: rgba(255, 255, 255, 0.05); /* Sedikit transparan untuk header */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
-#page-content-wrapper {
-    width: calc(100% - var(--sidebar-width));
-}
-
-/* Gaya Area Profil di Sidebar */
-.profile-area .profile-icon {
-    color: #bdbdbd; /* Warna ikon user */
-}
-.list-group-item-action {
-    color: #adb5bd; /* Teks menu non-aktif */
-    background-color: #343a40;
-    border: none;
-    border-left: 4px solid transparent;
-    padding-left: 1.5rem;
-}
-.list-group-item-action:hover {
+.profile-icon {
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
     color: #fff;
-    background-color: #495057;
-}
-.list-group-item-action.active {
-    color: #fff;
-    background-color: #007bff; /* Warna aktif, sesuaikan jika perlu */
-    border-left: 4px solid #fff; /* Garis putih di samping item aktif */
-}
-.list-group-item-action i {
-    margin-right: 10px;
-}
-
-/* Gaya Custom Card */
-.card-custom {
-    height: 120px; /* Tinggi Card seperti di gambar */
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: transform 0.2s;
-    border: none;
-}
-
-.card-custom:hover {
-    transform: translateY(-5px);
-}
-
-.card-custom .card-body {
+    width: 80px;
+    height: 80px;
     display: flex;
     align-items: center;
-    padding: 1.5rem;
+    justify-content: center;
+}
+.profile-detail p {
+    font-size: 0.9rem;
+    color: #e0e0e0;
+}
+.profile-detail .detail-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+.profile-detail .detail-item:last-child {
+    border-bottom: none;
 }
 
-.card-custom .col-auto {
-    margin-right: 1.5rem;
+/* 2. Styling Form Konten Utama */
+.card {
+    border: none;
+    border-radius: 8px;
 }
 
-/* Warna Latar Belakang Card */
-.bg-pink {
-    background-color: var(--pink-card) !important;
+.form-control, .input-group-text {
+    background-color: #f8f9fa; /* Latar belakang input abu-abu muda */
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
 }
-.bg-blue {
-    background-color: var(--blue-card) !important;
-}
-.bg-green {
-    /* Sesuaikan warna hijau agar mirip dengan gambar */
-    background-color: #20c997 !important; 
-}
-.bg-purple {
-    background-color: var(--purple-card) !important;
+/* Input yang readonly (seperti NIM) tampil beda */
+.form-control[readonly] {
+    background-color: #e9ecef; /* Lebih gelap dari input biasa */
 }
 
-/* Navbar Atas */
-.navbar-brand {
+.form-label {
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
+    font-size: 0.95rem;
+}
+
+/* 3. Sidebar Kanan (Menu Navigasi Sekunder) */
+.sidebar-kanan {
+    border: none;
+    border-radius: 4px;
+    /* Memberi latar belakang yang sesuai dengan desain */
+    background-color: #fff; 
+    overflow: hidden;
+}
+
+.sidebar-kanan .list-group-item-action {
+    padding: 1rem;
+    color: var(--text-primary);
+    border-left: 4px solid transparent;
+    border-bottom: 1px solid #e9ecef;
+}
+
+/* Header di Sidebar Kanan - Menggunakan warna hijau muda */
+.sidebar-kanan .list-group-item:first-child {
+    background-color: var(--light-green); 
     font-weight: bold;
+    color: var(--dark-green);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom: none;
+}
+
+/* Item Aktif */
+.sidebar-kanan .list-group-item-action.active {
+    background-color: var(--medium-green) !important; 
+    color: #fff;
+    border-left: 4px solid var(--medium-green);
+}
+.sidebar-kanan .list-group-item-action:hover {
+    background-color: var(--light-green);
 }
