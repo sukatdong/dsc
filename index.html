@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akademik - Tugas Akhir</title>
+    <title>Akademik - SKPI</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css"> 
@@ -23,82 +23,111 @@
 
         <div class="d-flex justify-content-between align-items-center mb-1">
             <div>
-                <h2 class="main-title mb-0">Tugas Akhir</h2>
-                <p class="subtitle text-muted mb-0">Manajemen Pendaftaran dan Status Sidang</p>
+                <h2 class="main-title mb-0">Surat Keterangan Pendamping Ijazah (SKPI)</h2>
+                <p class="subtitle text-muted mb-0">Manajemen Pengisian dan Pengajuan SKPI</p>
             </div>
-            <button class="btn btn-success btn-panduan">
-                <i class="fa-solid fa-download me-2"></i> Panduan TA
+            <button class="btn btn-primary btn-panduan">
+                <i class="fa-solid fa-file-pdf me-2"></i> Panduan Pengisian
             </button>
         </div>
         
         <ul class="nav nav-tabs custom-tabs mb-4 mt-3">
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Pendaftaran</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Seminar Proposal</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Sidang Akhir</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Yudisium</a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-book me-1"></i> Panduan</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-pen-to-square me-1"></i> Pengajuan</a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-clipboard-check me-1"></i> Riwayat Verifikasi</a></li>
         </ul>
 
-        <div class="card p-4 shadow-sm">
+        <div class="card p-5 shadow-sm">
             
-            <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
-                <button class="btn btn-primary add-data-btn mb-2 mb-md-0">
-                    <i class="fa-solid fa-plus me-2"></i> Daftar Tugas Akhir
-                </button>
+            <h4 class="mb-4 text-primary">Formulir Data Pendukung SKPI</h4>
+            <p class="text-muted">Isi formulir ini untuk mencantumkan prestasi, sertifikasi, dan kegiatan non-akademik Anda.</p>
+            
+            <div class="alert alert-info" role="alert">
+                <i class="fa-solid fa-info-circle me-2"></i> **Penting:** SKPI hanya dapat diajukan setelah Anda menyelesaikan **Seminar Proposal** dan **Telah Menempuh minimal 120 SKS**.
+            </div>
+
+            <div class="data-section mt-4">
+                <h5 class="mb-3">1. Kegiatan Kepanitiaan/Organisasi</h5>
+                <p class="text-muted small">Tambahkan kegiatan yang relevan, maksimal 5 data.</p>
                 
-                <div class="search-box d-flex align-items-center">
-                    <label for="search-input" class="me-2 text-muted">Search:</label>
-                    <input type="text" id="search-input" class="form-control form-control-sm">
+                <div class="d-flex justify-content-end mb-3">
+                    <button class="btn btn-success btn-sm">
+                        <i class="fa-solid fa-plus me-1"></i> Tambah Kegiatan
+                    </button>
+                </div>
+
+                <div class="table-responsive mb-5">
+                    <table class="table table-striped table-bordered table-skpi">
+                        <thead>
+                            <tr>
+                                <th>Nama Kegiatan</th>
+                                <th>Jabatan/Peran</th>
+                                <th>Tahun</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Webinar Nasional Teknologi 4.0</td>
+                                <td>Ketua Panitia</td>
+                                <td>2024</td>
+                                <td><button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>UKM Badminton</td>
+                                <td>Anggota Aktif</td>
+                                <td>2022-2025</td>
+                                <td><button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="text-center text-muted">Belum ada data prestasi non-akademik ditambahkan.</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-            <div class="table-responsive">
-                <table class="table table-riwayat">
-                    <thead>
-                        <tr>
-                            <th class="sortable-header">Tanggal Pengajuan <i class="fa-solid fa-sort"></i></th>
-                            <th class="sortable-header">Judul TA <i class="fa-solid fa-sort"></i></th>
-                            <th class="sortable-header">Dosen Pembimbing</th>
-                            <th class="sortable-header">Status <i class="fa-solid fa-sort"></i></th>
-                            <th class="sortable-header aksi-col">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>2025-10-01 10:30:00</td>
-                            <td>Rancangan Sistem Informasi Akademik Berbasis Cloud</td>
-                            <td>Dr. Ir. Budi Santoso, MT.</td>
-                            <td>
-                                <span class="badge status-badge status-ditolak">
-                                    Ditolak <i class="fa-solid fa-times"></i>
-                                </span>
-                            </td>
-                            <td>
-                                <button class="btn btn-view" title="Lihat Detail"><i class="fa-solid fa-eye"></i></button>
-                                <button class="btn btn-delete" title="Hapus Pengajuan"><i class="fa-solid fa-trash-can"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2025-11-05 09:15:00</td>
-                            <td>Analisis Sentimen Twitter Terhadap Layanan Publik</td>
-                            <td>Prof. Dr. Nita Wijaya, S.Kom.</td>
-                            <td>
-                                <span class="badge status-badge status-disetujui">
-                                    Disetujui
-                                </span>
-                            </td>
-                            <td>
-                                <button class="btn btn-view" title="Lihat Detail"><i class="fa-solid fa-eye"></i></button>
-                                <button class="btn btn-delete" title="Hapus Pengajuan"><i class="fa-solid fa-trash-can"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="data-section mt-4">
+                <h5 class="mb-3">2. Sertifikasi/Kompetensi Profesional</h5>
+                <p class="text-muted small">Contoh: Sertifikasi *Programming*, Bahasa Asing, atau Pelatihan Khusus.</p>
+                
+                <div class="d-flex justify-content-end mb-3">
+                    <button class="btn btn-success btn-sm">
+                        <i class="fa-solid fa-plus me-1"></i> Tambah Sertifikat
+                    </button>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-skpi">
+                        <thead>
+                            <tr>
+                                <th>Nama Sertifikasi</th>
+                                <th>Penyelenggara</th>
+                                <th>Tahun</th>
+                                <th>Status Berkas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                             <tr>
+                                <td>Certified Web Developer (CWD)</td>
+                                <td>Dicoding Academy</td>
+                                <td>2024</td>
+                                <td><span class="badge bg-warning">Menunggu Verifikasi</span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="text-center text-muted">Belum ada data sertifikasi ditambahkan.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             
-            <div class="d-flex justify-content-end align-items-center mt-3 pagination-controls">
-                <span class="me-2 text-muted small">Previous</span>
-                <span class="pagination-page active">1</span>
-                <span class="ms-2 text-muted small">Next</span>
+            <hr class="my-5">
+
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary btn-finalisasi">
+                    <i class="fa-solid fa-check me-1"></i> Finalisasi & Ajukan SKPI
+                </button>
             </div>
 
         </div>
