@@ -1,7 +1,9 @@
 :root {
-    --color-primary: #007bff; 
-    --color-success: #28a745; 
-    --color-bg: #f4f7f9; /* Background lebih cerah */
+    --color-primary: #007bff;     /* Biru */
+    --color-danger: #dc3545;      /* Merah (Untuk Cuti) */
+    --color-success: #28a745;     /* Hijau (Strip Header/Disetujui) */
+    --color-warning: #ffc107;     /* Kuning (Peringatan/Diproses) */
+    --color-bg: #f4f7f9;
     --color-text: #212529;
     --border-radius-lg: 8px;
 }
@@ -32,7 +34,7 @@ body {
     font-weight: 600;
 }
 
-/* 2. Judul dan Breadcrumb Modern */
+/* 2. Judul dan Breadcrumb */
 .main-title {
     font-weight: 700;
     font-size: 2rem;
@@ -51,12 +53,13 @@ body {
 /* 3. Konten Utama: Card, Button, Table */
 .card-modern {
     border-radius: var(--border-radius-lg);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Shadow lebih halus */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); 
 }
 
+/* Tombol Khusus Cuti */
 .btn-permohonan {
-    background-color: var(--color-primary) !important;
-    border-color: var(--color-primary) !important;
+    background-color: var(--color-danger) !important;
+    border-color: var(--color-danger) !important;
     font-size: 1rem;
     font-weight: 600;
     padding: 10px 20px;
@@ -64,25 +67,21 @@ body {
     transition: background-color 0.2s;
 }
 .btn-permohonan:hover {
-    background-color: #0056b3 !important;
+    background-color: #c82333 !important;
 }
 
-.alert-modern {
+/* Alert Peringatan Cuti */
+.alert-modern.alert-warning {
     border-radius: var(--border-radius-lg);
-    border-left: 5px solid var(--color-primary);
-    background-color: #e9f7ff;
-    color: #0056b3;
+    border-left: 5px solid var(--color-warning);
+    background-color: #fffbe6;
+    color: #856404;
 }
 
-/* Tabel Modern */
-.table-modern {
-    border-radius: var(--border-radius-lg);
-    overflow: hidden; /* Memastikan sudut tabel ikut melengkung */
-    margin-bottom: 0;
-}
+/* Tabel Riwayat */
 .table-modern thead th {
     font-weight: 600;
-    background-color: #f0f3f6; /* Header tabel abu-abu terang */
+    background-color: #f0f3f6; 
     color: #495057;
     padding: 1rem;
     border-bottom: 2px solid #dee2e6;
@@ -92,17 +91,16 @@ body {
     font-size: 0.95rem;
     border-top: 1px solid #f0f0f0;
 }
-.table-modern tbody tr:hover {
-    background-color: #fcfcfc;
-}
 
-/* Badge Status dan Tombol Aksi */
+/* Badge Status */
 .status-badge {
     padding: 0.5em 1em;
-    border-radius: 50rem; /* Pill shape */
+    border-radius: 50rem; 
     font-weight: 600;
     font-size: 0.8em;
 }
+
+/* Styling Tombol Aksi */
 .btn-action {
     font-size: 0.85rem;
     padding: 6px 10px;
