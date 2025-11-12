@@ -1,0 +1,106 @@
+:root {
+    --sidebar-width: 250px;
+    --primary-blue: #0d6efd; /* Warna Navbar Atas */
+    --pink-card: #e83e8c; /* Card Akademik */
+    --blue-card: #007bff; /* Card Administrasi */
+    --green-card: #28a745; /* Card Kemahasiswaan (dibuat lebih muda) */
+    --purple-card: #6f42c1; /* Card Perpustakaan */
+}
+
+/* Pengaturan Sidebar */
+#wrapper {
+    overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -15rem; /* Sembunyikan default (opsional) */
+    width: var(--sidebar-width);
+    position: fixed;
+    transition: margin 0.25s ease-out;
+    background-color: #343a40 !important; /* Latar Belakang Sidebar (Dark) */
+    color: #fff;
+    z-index: 1000;
+}
+
+#page-content-wrapper {
+    min-width: 100vw;
+    margin-left: var(--sidebar-width);
+    padding-left: 0;
+}
+
+/* Tampilkan Sidebar Secara Default (untuk desain desktop) */
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
+#page-content-wrapper {
+    width: calc(100% - var(--sidebar-width));
+}
+
+/* Gaya Area Profil di Sidebar */
+.profile-area .profile-icon {
+    color: #bdbdbd; /* Warna ikon user */
+}
+.list-group-item-action {
+    color: #adb5bd; /* Teks menu non-aktif */
+    background-color: #343a40;
+    border: none;
+    border-left: 4px solid transparent;
+    padding-left: 1.5rem;
+}
+.list-group-item-action:hover {
+    color: #fff;
+    background-color: #495057;
+}
+.list-group-item-action.active {
+    color: #fff;
+    background-color: #007bff; /* Warna aktif, sesuaikan jika perlu */
+    border-left: 4px solid #fff; /* Garis putih di samping item aktif */
+}
+.list-group-item-action i {
+    margin-right: 10px;
+}
+
+/* Gaya Custom Card */
+.card-custom {
+    height: 120px; /* Tinggi Card seperti di gambar */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s;
+    border: none;
+}
+
+.card-custom:hover {
+    transform: translateY(-5px);
+}
+
+.card-custom .card-body {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+.card-custom .col-auto {
+    margin-right: 1.5rem;
+}
+
+/* Warna Latar Belakang Card */
+.bg-pink {
+    background-color: var(--pink-card) !important;
+}
+.bg-blue {
+    background-color: var(--blue-card) !important;
+}
+.bg-green {
+    /* Sesuaikan warna hijau agar mirip dengan gambar */
+    background-color: #20c997 !important; 
+}
+.bg-purple {
+    background-color: var(--purple-card) !important;
+}
+
+/* Navbar Atas */
+.navbar-brand {
+    font-weight: bold;
+}
