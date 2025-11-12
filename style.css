@@ -1,6 +1,6 @@
 :root {
     --color-primary: #007bff; /* Biru */
-    --color-success: #28a745; /* Hijau Buku Panduan/Save */
+    --color-success: #28a745; /* Hijau Buku Panduan/Alert Success */
     --color-bg: #f8f9fa;
     --color-text: #212529;
 }
@@ -18,7 +18,7 @@ body {
 /* 1. Header Atas */
 .navbar-top {
     background-color: var(--color-primary); 
-    border-bottom: 3px solid var(--color-success); /* Strip Hijau di bawah navbar */
+    border-bottom: 3px solid var(--color-success); 
     padding-left: 0;
 }
 .header-color-strip {
@@ -34,9 +34,6 @@ body {
 .main-title {
     font-weight: 600;
 }
-.subtitle {
-    margin-top: -5px;
-}
 
 /* Tombol Panduan */
 .btn-panduan {
@@ -47,13 +44,13 @@ body {
 
 /* 2. Tab Navigasi Horizontal */
 .custom-tabs {
-    border-bottom: 1px solid #dee2e6; /* Ada garis tipis di bawah tab */
+    border-bottom: 1px solid #dee2e6;
 }
 .custom-tabs .nav-link {
     color: var(--color-text);
     background-color: #f0f0f0;
     border: none;
-    border-radius: 4px 4px 0 0; /* Hanya di atas */
+    border-radius: 4px 4px 0 0;
     padding: 10px 15px;
     font-size: 0.95rem;
     font-weight: 500;
@@ -65,7 +62,7 @@ body {
     background-color: var(--color-primary); /* Biru Aktif */
     font-weight: 600;
     border-color: var(--color-primary);
-    border-bottom: 1px solid #fff; /* Menghilangkan garis bawah tab aktif */
+    border-bottom: 1px solid #fff;
 }
 
 /* 3. Konten Utama & Formulir */
@@ -74,31 +71,6 @@ body {
     border: 1px solid #dee2e6;
 }
 
-/* Informasi Kelompok (Header Form) */
-.info-table {
-    width: 350px; /* Batasi lebar info */
-    border-collapse: collapse;
-}
-
-.info-table tr td {
-    padding: 3px 0;
-    font-size: 1rem;
-    vertical-align: top;
-}
-
-.info-table .info-label {
-    width: 120px; 
-    font-weight: 400; /* Tidak terlalu tebal */
-}
-.info-table .info-separator {
-    width: 10px;
-    font-weight: 400;
-}
-.info-table .info-value {
-    font-weight: 600; /* Nilai lebih tebal */
-}
-
-/* Styling Input Form */
 .form-label-custom {
     font-size: 1rem;
     font-weight: 500;
@@ -107,28 +79,34 @@ body {
 }
 
 .form-control {
-    border: none;
-    border-bottom: 1px solid #ced4da; /* Hanya garis bawah */
-    border-radius: 0;
-    padding: 0.5rem 0;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 10px;
     font-size: 1rem;
 }
 .form-control:focus {
-    box-shadow: none;
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
     border-color: var(--color-primary);
 }
 
 textarea.form-control {
-    border: 1px solid #ced4da; /* Border penuh untuk textarea */
-    border-radius: 4px;
-    padding: 10px;
     resize: vertical;
 }
 
-/* Tombol Save */
-.btn-save {
-    background-color: var(--color-success) !important;
-    border-color: var(--color-success) !important;
+/* Alert Status Upload */
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+/* Tombol Upload */
+.btn-upload {
+    background-color: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
     font-weight: 600;
     padding: 10px 20px;
+}
+.btn-secondary {
+    font-weight: 500;
 }
