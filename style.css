@@ -1,160 +1,134 @@
-/* Palet Warna Kustom */
+/* Palet Warna Modern */
 :root {
-    --color-sidebar: #343a40;      /* Abu-abu Gelap Sidebar */
-    --color-sidebar-active: #007bff; /* Biru Sidebar Active */
-    --color-navbar: #0d6efd;       /* Biru Header Atas */
-    --color-blue-card: #007bff;     /* Card Riwayat Status */
-    --color-green-light-card: #20c997; /* Card Pengajuan KP */
-    --color-purple-card: #6f42c1;  /* Card Pengajuan KKN */
-    --color-green-dark-card: #6c757d; /* Card Pengajuan Yudisium (Dibuat Hijau Tua-Kekuningan) */
-    --sidebar-width: 250px;
+    --color-primary: #0d6efd;
+    --color-secondary: #6c757d;
+    --color-expired: #dc3545; /* Merah untuk EXPIRED */
+    --color-success: #28a745; /* Hijau untuk Selesai */
+    --color-bg-light: #f8f9fa;
+    --font-family-sans-serif: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
-/* 1. Pengaturan Layout Utama */
-#wrapper {
-    overflow-x: hidden;
-    background-color: #f8f9fa; 
+body {
+    font-family: var(--font-family-sans-serif);
+    background-color: var(--color-bg-light);
 }
 
-/* Sidebar Kiri */
-.sidebar-kiri {
-    min-height: 100vh;
-    width: var(--sidebar-width);
-    position: fixed;
-    background-color: var(--color-sidebar) !important; 
-    color: #fff;
+/* 1. Header Atas */
+.navbar-top {
+    background-color: var(--color-primary) !important;
+    border-bottom: 3px solid var(--color-primary);
 }
 
-#page-content-wrapper {
-    min-width: calc(100vw - var(--sidebar-width));
-    margin-left: var(--sidebar-width);
-    padding-left: 0;
+/* 2. Judul Utama dan Sub-Section */
+.content-container {
+    padding-top: 20px !important;
 }
-
-/* 2. Styling Profil Area */
-.profile-area {
-    background-color: rgba(255, 255, 255, 0.05); /* Sedikit gelap dari sidebar */
-}
-.profile-icon {
-    color: #bdbdbd;
-}
-.profile-link {
-    opacity: 0.8;
-}
-
-/* 3. Styling Navigasi Utama */
-.main-nav .list-group-item-action {
-    color: #adb5bd;
-    background-color: var(--color-sidebar);
-    border: none;
-    padding-left: 1.5rem;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-}
-.main-nav .list-group-item-action:hover {
-    color: #fff;
-    background-color: #495057;
-}
-.main-nav .list-group-item-action.active {
-    color: #fff;
-    background-color: var(--color-sidebar-active); /* Biru Aktif */
-    border-left: 4px solid #fff;
-}
-.main-nav .list-group-item-action i {
-    margin-right: 10px;
-    width: 20px; /* Lebar tetap untuk ikon */
-}
-
-/* Logo Chat Kiri Bawah */
-.logo-we-are-here {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    background-color: #28a745; /* Warna hijau chat */
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-/* 4. Styling Greeting Section */
-.greeting h3 {
-    font-size: 1.5rem;
-    color: #343a40;
-}
-.greeting p {
-    margin-top: -5px;
-    font-size: 1rem;
-}
-
-/* 5. Styling Dashboard Cards */
-.card-dashboard {
-    height: 150px; 
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    border: none;
-    position: relative;
-    overflow: hidden;
-}
-
-.card-dashboard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-}
-
-.card-dashboard .card-body {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-}
-
-.card-dashboard .card-icon {
-    position: absolute;
-    top: 50%;
-    right: 15px;
-    transform: translateY(-50%);
-    font-size: 3.5rem;
-    opacity: 0.15; /* Ikon besar di latar belakang */
-}
-
-.card-dashboard .card-title {
-    font-size: 1.8rem;
+.section-title {
     font-weight: 600;
-    margin-bottom: 0;
-    z-index: 2;
+    color: var(--color-secondary); /* Warna abu-abu yang elegan */
+    margin-bottom: 20px;
 }
-
-.card-dashboard .card-text {
-    margin-top: -5px;
-    font-style: italic;
-    font-weight: 300;
-    z-index: 2;
+.sub-section-title {
+    font-weight: 500;
+    color: var(--color-text);
 }
 
 
-/* Warna Latar Belakang Card */
-.bg-blue {
-    background-color: var(--color-blue-card) !important;
+/* 3. Card Batas Waktu (EXPIRED) - Minimalis & Tegas */
+.deadline-card {
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    border-left: 5px solid var(--color-expired); /* Garis tegas di kiri */
+    border-radius: 8px;
 }
-.bg-green-light {
-    background-color: var(--color-green-light-card) !important;
+.deadline-card .deadline-text {
+    font-size: 1.1rem;
+    color: var(--color-secondary);
 }
-.bg-purple {
-    background-color: var(--color-purple-card) !important;
+.deadline-card .status-expired {
+    font-size: 1.8rem;
+    color: var(--color-expired);
+    letter-spacing: 2px;
 }
-.bg-green-dark {
-    /* Menggunakan warna yang mirip dengan yang ada di gambar (Hijau Olive Tua) */
-    background-color: #70942e !important; 
+.deadline-card .card-body {
+    padding: 1.5rem 2rem !important;
 }
 
-/* Footer */
-.footer-info {
+
+/* 4. Tombol Aksi KP (Bimbingan & Log Book) */
+.btn-action-kp {
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+.btn-action-kp-active {
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+}
+
+
+/* 5. Tabel Riwayat Pengajuan - Minimalis */
+.table-minimalis {
+    border: none;
+    border-collapse: separate;
+}
+
+.table-minimalis thead th {
+    font-weight: 600;
+    color: var(--color-secondary);
+    border-bottom: 2px solid #dee2e6;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.table-minimalis tbody td {
+    vertical-align: middle;
+    padding: 1rem 0.5rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.instansi-name {
+    color: var(--color-primary);
+}
+.instansi-address {
+    font-size: 0.85rem;
     color: #6c757d;
+}
+
+/* Badge Status */
+.status-badge {
+    padding: 0.35em 0.65em;
+    border-radius: 50rem;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+.status-selesai {
+    background-color: var(--color-success);
+    color: #fff;
+}
+
+/* Tombol Detail */
+.btn-detail {
+    background-color: var(--color-primary);
+    color: #fff;
+    border-radius: 50rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+    transition: background-color 0.2s;
+}
+.btn-detail:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+
+/* 6. Footer */
+.footer-info {
+    color: #adb5bd;
 }
