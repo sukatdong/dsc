@@ -3,110 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Mahasiswa - Pengumuman Wisuda</title>
+    <title>Akademik - Pendaftaran Wisuda</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    
-    <style>
-        :root {
-            --color-primary: #007bff;     /* Biru Header */
-            --color-success: #28a745;     /* Hijau Pengumuman */
-            --color-bg: #f8f9fa;
-            --color-text: #212529;
-            --color-border: #dee2e6;
-        }
-
-        body {
-            background-color: var(--color-bg);
-            font-family: Arial, sans-serif;
-            color: var(--color-text);
-        }
-
-        .content-container {
-            max-width: 1200px;
-        }
-
-        /* 1. Header Atas */
-        .navbar-top {
-            background-color: var(--color-primary) !important;
-        }
-        .navbar-brand {
-            font-weight: 600;
-        }
-
-        /* 2. Judul dan Subtitle */
-        .main-title {
-            font-weight: 600;
-            font-size: 2rem;
-        }
-        .subtitle {
-            margin-top: -5px;
-            font-size: 1rem;
-        }
-
-        /* 3. Card Pengumuman */
-        .card-announcement {
-            border-radius: 8px;
-            border: 1px solid var(--color-border);
-        }
-        
-        .announcement-header {
-            background-color: var(--color-success);
-            color: white;
-            padding: 1rem 1.5rem;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .announcement-body {
-            padding: 1.5rem;
-        }
-
-        /* Poin-poin Detail */
-        .detail-item {
-            display: flex;
-            margin-bottom: 10px;
-            padding: 8px 0;
-            border-bottom: 1px dashed #eee;
-        }
-        .detail-label {
-            width: 200px;
-            font-weight: 500;
-            color: #495057;
-        }
-        .detail-value {
-            font-weight: 600;
-            color: var(--color-primary);
-        }
-
-        /* Alur Pendaftaran */
-        .alur-pendaftaran {
-            margin-top: 30px;
-        }
-        .alur-pendaftaran ol {
-            padding-left: 20px;
-        }
-        .alur-pendaftaran li {
-            margin-bottom: 10px;
-            line-height: 1.5;
-        }
-        
-        /* Tombol Aksi */
-        .btn-action {
-            background-color: var(--color-primary);
-            border-color: var(--color-primary);
-            font-weight: 600;
-            padding: 10px 25px;
-            margin-top: 15px;
-        }
-
-        /* 4. Footer */
-        .footer-info {
-            color: #adb5bd;
-        }
-    </style>
+    <link rel="stylesheet" href="style_pendaftaran_wisuda.css"> 
 </head>
 <body>
 
@@ -118,66 +18,104 @@
 
     <div class="container-fluid content-container p-4">
 
-        <h2 class="main-title mb-1">Pengumuman Wisuda</h2>
-        <p class="subtitle text-muted mb-4">Informasi lengkap pendaftaran dan pelaksanaan upacara wisuda.</p>
+        <h2 class="main-title mb-1">Pendaftaran Wisuda</h2>
+        <p class="subtitle text-muted mb-4">Lengkapi data dan persyaratan dokumen untuk pendaftaran wisuda periode ini.</p>
 
-        <div class="card card-announcement shadow-sm mb-4">
+        <div class="card card-form shadow-sm p-4 mb-4">
             
-            <div class="announcement-header">
-                <i class="fa-solid fa-graduation-cap me-2"></i> Pengumuman Wisuda Periode XXX Tahun 2026
+            <h4 class="section-header mb-4">A. Informasi Akademik</h4>
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <label class="form-label-read">NIM</label>
+                    <input type="text" class="form-control" value="123200037" readonly>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label-read">Tanggal Yudisium</label>
+                    <input type="text" class="form-control" value="2024-10-30" readonly>
+                </div>
             </div>
-            
-            <div class="announcement-body">
+
+            <div class="row mb-5">
+                <div class="col-md-12">
+                    <label class="form-label-read">Judul Tugas Akhir (Verifikasi Final)</label>
+                    <textarea class="form-control" rows="2" readonly>Analisis Sentimen Twitter Terhadap Layanan Publik Menggunakan Metode Naive Bayes</textarea>
+                </div>
+            </div>
+
+            <h4 class="section-header mb-4">B. Data Pendaftaran</h4>
+            <form>
                 
-                <p class="mb-4">Disampaikan kepada seluruh calon wisudawan/wisudawati yang telah menyelesaikan studi dan lulus Yudisium, berikut adalah jadwal penting terkait pelaksanaan wisuda:</p>
-
-                <div class="row">
+                <div class="row mb-4">
                     <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Tanggal Pelaksanaan</span>
-                            <span class="detail-value">Sabtu, 12 April 2026</span>
-                        </div>
+                        <label for="nama_ayah_ijazah" class="form-label">Nama Ayah Kandung</label>
+                        <input type="text" class="form-control" id="nama_ayah_ijazah" placeholder="Sesuai Akte Lahir">
                     </div>
                     <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Waktu</span>
-                            <span class="detail-value">08.00 WIB s/d Selesai</span>
-                        </div>
+                        <label for="nama_ibu_ijazah" class="form-label">Nama Ibu Kandung</label>
+                        <input type="text" class="form-control" id="nama_ibu_ijazah" placeholder="Sesuai Akte Lahir">
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Lokasi</span>
-                            <span class="detail-value">Gedung Auditorium Utama Kampus</span>
-                        </div>
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <label for="alamat_sekarang" class="form-label">Alamat Tinggal Saat Ini</label>
+                        <input type="text" class="form-control" id="alamat_sekarang">
                     </div>
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Batas Pendaftaran Akhir</span>
-                            <span class="detail-value">Jumat, 28 Maret 2026</span>
-                        </div>
+                    <div class="col-md-4">
+                        <label for="no_hp" class="form-label">Nomor HP Aktif (WA)</label>
+                        <input type="tel" class="form-control" id="no_hp" value="085664515247">
                     </div>
                 </div>
 
-                <div class="alur-pendaftaran">
-                    <h5 class="mb-3">Alur Pendaftaran Wisuda Online:</h5>
-                    <ol>
-                        <li>Pastikan status akademik Anda sudah **LULUS Yudisium** di Portal Mahasiswa.</li>
-                        <li>Lengkapi data dan upload dokumen persyaratan (pas foto, surat bebas pinjam perpustakaan, dll.) di menu **Akademik > Pendaftaran Wisuda**.</li>
-                        <li>Lakukan pembayaran biaya wisuda ke rekening yang tertera.</li>
-                        <li>Verifikasi akhir dilakukan oleh BAAK. Bukti pendaftaran dan pengambilan toga dapat dicetak setelah status disetujui.</li>
-                    </ol>
+                <h4 class="section-header mb-4 mt-5">C. Persyaratan Dokumen</h4>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered table-upload">
+                        <thead>
+                            <tr class="table-light">
+                                <th>#</th>
+                                <th>Jenis Dokumen</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Pas Foto Resmi (Latar Merah) - **3x4**</td>
+                                <td><span class="badge bg-danger">Belum Diunggah</span></td>
+                                <td><input class="form-control form-control-sm" type="file" accept=".jpg,.png"></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Bukti Lunas Biaya Wisuda</td>
+                                <td><span class="badge bg-warning text-dark">Menunggu Verifikasi</span></td>
+                                <td><button type="button" class="btn btn-sm btn-outline-secondary">Lihat File</button></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Surat Keterangan Bebas Pustaka</td>
+                                <td><span class="badge bg-success">Terunggah</span></td>
+                                <td><button type="button" class="btn btn-sm btn-success text-white"><i class="fa-solid fa-check"></i> Sudah</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 
+                <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" id="persetujuan" required>
+                    <label class="form-check-label" for="persetujuan">
+                        Saya menyatakan semua data yang diinput benar dan siap diverifikasi.
+                    </label>
+                </div>
+
                 <div class="d-flex justify-content-end">
-                    <button class="btn btn-primary btn-action">
-                        <i class="fa-solid fa-clipboard-list me-2"></i> Lanjut ke Pendaftaran
+                    <button type="submit" class="btn btn-primary btn-finalisasi">
+                        <i class="fa-solid fa-paper-plane me-2"></i> Finalisasi Pendaftaran
                     </button>
                 </div>
+            </form>
 
-            </div>
         </div>
 
         <div class="footer-info mt-5 pt-4 text-secondary small">
