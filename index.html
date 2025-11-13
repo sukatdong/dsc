@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrasi - Formulir Beasiswa</title>
+    <title>Administrasi - Formulir Cuti Kuliah</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="style_form_beasiswa.css"> 
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
 
@@ -18,43 +18,39 @@
 
     <div class="container-fluid content-container p-4">
 
-        <h2 class="main-title mb-1">Pengajuan Beasiswa Baru</h2>
-        <p class="subtitle text-muted mb-4">Lengkapi formulir berikut untuk mengajukan beasiswa di periode ini.</p>
+        <h2 class="main-title mb-1">Pengajuan Cuti Kuliah</h2>
+        <p class="subtitle text-muted mb-4">Ajukan permohonan cuti akademik Anda untuk semester berikutnya.</p>
+
+        <div class="alert alert-info-custom mb-4" role="alert">
+            <i class="fa-solid fa-circle-info me-2"></i> **Perhatian:** Cuti kuliah harus diajukan sebelum batas waktu pendaftaran semester. Pastikan Anda sudah melunasi tunggakan jika ada.
+        </div>
 
         <div class="card card-form shadow-sm p-5 mb-4">
             
             <form>
-                <h4 class="section-header mb-4"><i class="fa-solid fa-graduation-cap me-2"></i> Pilihan Beasiswa</h4>
+                <h4 class="section-header mb-4"><i class="fa-solid fa-calendar-alt me-2"></i> Informasi Cuti</h4>
                 
                 <div class="row mb-4">
                     <div class="col-md-6 mb-3 mb-md-0">
-                        <label for="jenis_beasiswa" class="form-label-custom">Pilih Program Beasiswa</label>
-                        <select class="form-select" id="jenis_beasiswa" required>
-                            <option selected disabled value="">Pilih salah satu...</option>
-                            <option value="ppa">Beasiswa PPA (Peningkatan Prestasi Akademik)</option>
-                            <option value="bca">Beasiswa Bank BCA</option>
-                            <option value="internal">Beasiswa Internal Kampus</option>
+                        <label for="semester_cuti" class="form-label-custom">Semester Cuti yang Diajukan</label>
+                        <select class="form-select" id="semester_cuti" required>
+                            <option selected disabled value="">Pilih Semester...</option>
+                            <option value="ganjil_2026">Ganjil 2026/2027</option>
+                            <option value="genap_2026">Genap 2026/2027</option>
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="periode" class="form-label-custom">Periode Pengajuan</label>
-                        <input type="text" class="form-control" id="periode" value="Ganjil 2025/2026" readonly>
+                        <label for="lama_cuti" class="form-label-custom">Lama Cuti</label>
+                        <input type="text" class="form-control" id="lama_cuti" value="1 Semester" readonly>
                     </div>
                 </div>
 
-                <div class="row mb-5">
-                    <div class="col-md-6">
-                        <label for="ipk" class="form-label-custom">IPK Terakhir (Otomatis dari Sistem)</label>
-                        <input type="text" class="form-control bg-light" id="ipk" value="3.55" readonly>
-                        <div class="form-text text-muted">Persyaratan minimum IPK adalah 3.00</div>
-                    </div>
-                    <div class="col-md-6">
-                         <label for="alasan" class="form-label-custom">Alasan Mengajukan Beasiswa (Singkat)</label>
-                        <textarea class="form-control" id="alasan" rows="3" placeholder="Jelaskan kebutuhan Anda..."></textarea>
-                    </div>
+                <div class="mb-5">
+                    <label for="alasan_cuti" class="form-label-custom">Alasan Pengajuan Cuti Kuliah</label>
+                    <textarea class="form-control" id="alasan_cuti" rows="4" placeholder="Jelaskan secara rinci alasan Anda mengajukan cuti (misalnya: masalah kesehatan, masalah finansial, pekerjaan, dll.)" required></textarea>
                 </div>
 
-                <h4 class="section-header mb-4"><i class="fa-solid fa-folder-open me-2"></i> Persyaratan Dokumen Pendukung</h4>
+                <h4 class="section-header mb-4"><i class="fa-solid fa-file-upload me-2"></i> Dokumen Persyaratan</h4>
                 
                 <div class="table-responsive mb-4">
                     <table class="table table-bordered table-upload">
@@ -69,19 +65,19 @@
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>Transkrip Nilai (Terakhir)</td>
+                                <td>Surat Permohonan Cuti (ditandatangani orang tua/wali)</td>
                                 <td><span class="badge bg-danger">Belum Ada</span></td>
                                 <td><input class="form-control form-control-sm" type="file" accept=".pdf"></td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>Surat Keterangan Tidak Mampu (SKTM)</td>
-                                <td><span class="badge bg-danger">Belum Ada</span></td>
-                                <td><input class="form-control form-control-sm" type="file" accept=".pdf"></td>
+                                <td>Transkrip Nilai (Lengkap)</td>
+                                <td><span class="badge bg-success">Terunggah</span></td>
+                                <td><button type="button" class="btn btn-sm btn-outline-success"><i class="fa-solid fa-check"></i> Sudah</button></td>
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td>Bukti Pembayaran UKT Semester Sebelumnya</td>
+                                <td>Bukti Lunas UKT Semester Terakhir</td>
                                 <td><span class="badge bg-success">Terunggah</span></td>
                                 <td><button type="button" class="btn btn-sm btn-outline-success"><i class="fa-solid fa-check"></i> Sudah</button></td>
                             </tr>
@@ -89,13 +85,9 @@
                     </table>
                 </div>
 
-                <div class="alert alert-warning-custom mt-4 mb-4">
-                    <i class="fa-solid fa-triangle-exclamation me-2"></i> Dengan menekan tombol **Submit**, Anda menyatakan semua data dan dokumen adalah benar.
-                </div>
-
                 <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-success btn-submit">
-                        <i class="fa-solid fa-paper-plane me-2"></i> Submit Pengajuan
+                    <button type="submit" class="btn btn-submit">
+                        <i class="fa-solid fa-pause-circle me-2"></i> Ajukan Cuti Kuliah
                     </button>
                 </div>
             </form>
