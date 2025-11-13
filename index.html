@@ -3,112 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Konfirmasi Berhasil</title>
+    <title>Sistem Aktivitas dan Prestasi Mahasiswa - Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <style>
-        :root {
-            --color-success: #28a745; /* Hijau */
-            --color-primary: #007bff; /* Biru */
-            --color-bg: #f4f7f9;
-            --border-radius-lg: 10px;
-        }
-
-        body {
-            background-color: var(--color-bg);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-        }
-        
-        /* Kontainer Utama Konfirmasi */
-        .confirmation-box {
-            background-color: white;
-            padding: 40px;
-            border-radius: var(--border-radius-lg);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            max-width: 550px;
-            width: 90%;
-            text-align: center;
-        }
-        
-        .success-icon-container {
-            margin: 0 auto 25px;
-            width: 100px;
-            height: 100px;
-            background-color: var(--color-success);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 0 10px rgba(40, 167, 69, 0.2); /* Efek cincin luar */
-        }
-
-        .success-icon-container i {
-            color: white;
-            font-size: 4rem;
-        }
-
-        .confirmation-title {
-            font-weight: 700;
-            color: var(--color-success);
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .confirmation-message {
-            color: #495057;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        .btn-action-primary {
-            background-color: var(--color-primary);
-            border-color: var(--color-primary);
-            font-weight: 600;
-            padding: 10px 30px;
-            border-radius: 5px;
-            transition: background-color 0.2s;
-        }
-        .btn-action-primary:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
-        }
-        
-        .btn-secondary-action {
-            color: #6c757d;
-            border: 1px solid #ced4da;
-            margin-left: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="confirmation-box">
-        
-        <div class="success-icon-container">
-            <i class="fa-solid fa-check"></i>
-        </div>
+    <div class="login-wrapper">
+        <div class="login-container">
+            
+            <div class="login-box shadow-lg">
+                
+                <div class="text-center mb-4">
+                    <div class="logo-placeholder mx-auto mb-2">
+                        <img src="logo_sadewa_placeholder.png" alt="SADEWA Logo" class="img-fluid">
+                    </div>
+                    <h5 class="system-title">Sistem Aktivitas Dan Prestasi Mahasiswa</h5>
+                </div>
 
-        <h1 class="confirmation-title">PENGAJUAN BERHASIL!</h1>
-        
-        <div class="confirmation-message">
-            <p>**Permohonan Surat Keterangan Aktif** Anda telah berhasil dicatat oleh sistem.</p>
-            <p class="small text-muted">Status permohonan Anda kini **'Diproses'**. Silakan cek status berkala di menu Riwayat Administrasi.</p>
-        </div>
-        
-        <div class="d-flex justify-content-center">
-            <a href="#" class="btn btn-action-primary">
-                Lihat Riwayat Administrasi
-            </a>
-            <a href="#" class="btn btn-secondary-action">
-                Kembali ke Dashboard
-            </a>
+                <div class="toggle-group mb-4">
+                    <button class="toggle-btn active-toggle">Mahasiswa</button>
+                    <button class="toggle-btn inactive-toggle">Mahasiswa Inbound</button>
+                </div>
+                
+                <form>
+                    
+                    <div class="form-group mb-3">
+                        <div class="input-group input-group-lg custom-input">
+                            <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                            <input type="text" class="form-control" placeholder="NIM" value="T23200037">
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <div class="input-group input-group-lg custom-input">
+                            <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                            <input type="password" class="form-control" placeholder="Password" value="...........">
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-4 captcha-container">
+                        <div class="captcha-box">
+                            <div class="form-check d-flex align-items-center">
+                                <input class="form-check-input" type="checkbox" id="robotCheck">
+                                <label class="form-check-label ms-2 small" for="robotCheck">
+                                    I'm not a robot
+                                </label>
+                            </div>
+                            <div class="recaptcha-logo">
+                                reCAPTCHA
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-login w-100">
+                        LOGIN
+                    </button>
+                </form>
+
+                <div class="text-end mt-3">
+                    <a href="#" class="forgot-password-link">Lupa Password</a>
+                </div>
+
+            </div>
+            
+            <div class="login-footer-text">
+                Tim Sistem Informasi Terintegrasi UPN Veteran Yogyakarta
+            </div>
+
         </div>
     </div>
 
