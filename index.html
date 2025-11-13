@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akademik - Pendaftaran Wisuda</title>
+    <title>Administrasi - Pembayaran UKT</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="style_pendaftaran_wisuda.css"> 
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
 
@@ -18,104 +18,86 @@
 
     <div class="container-fluid content-container p-4">
 
-        <h2 class="main-title mb-1">Pendaftaran Wisuda</h2>
-        <p class="subtitle text-muted mb-4">Lengkapi data dan persyaratan dokumen untuk pendaftaran wisuda periode ini.</p>
+        <h2 class="main-title mb-1">Pembayaran UKT</h2>
+        <p class="subtitle text-muted mb-4">Informasi tagihan dan panduan pembayaran Uang Kuliah Tunggal.</p>
 
-        <div class="card card-form shadow-sm p-4 mb-4">
+        <div class="card card-status shadow-sm mb-4">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-7">
+                        <h4 class="status-label mb-2">Tagihan UKT Semester Ganjil 2025/2026</h4>
+                        <p class="status-info mb-0">Batas akhir pembayaran: **28 Februari 2026**</p>
+                    </div>
+                    <div class="col-md-5 text-md-end">
+                        <span class="status-badge status-belum-bayar">Rp 4.500.000,-</span>
+                        <p class="mb-0 small mt-1 text-danger fw-bold">Status: BELUM LUNAS</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
             
-            <h4 class="section-header mb-4">A. Informasi Akademik</h4>
-            <div class="row mb-4">
-                <div class="col-md-6">
-                    <label class="form-label-read">NIM</label>
-                    <input type="text" class="form-control" value="123200037" readonly>
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label-read">Tanggal Yudisium</label>
-                    <input type="text" class="form-control" value="2024-10-30" readonly>
-                </div>
-            </div>
+            <div class="col-lg-7">
+                <div class="card card-detail shadow-sm p-4 mb-4">
+                    <h4 class="section-header mb-4">Rincian Tagihan</h4>
 
-            <div class="row mb-5">
-                <div class="col-md-12">
-                    <label class="form-label-read">Judul Tugas Akhir (Verifikasi Final)</label>
-                    <textarea class="form-control" rows="2" readonly>Analisis Sentimen Twitter Terhadap Layanan Publik Menggunakan Metode Naive Bayes</textarea>
-                </div>
-            </div>
-
-            <h4 class="section-header mb-4">B. Data Pendaftaran</h4>
-            <form>
-                
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <label for="nama_ayah_ijazah" class="form-label">Nama Ayah Kandung</label>
-                        <input type="text" class="form-control" id="nama_ayah_ijazah" placeholder="Sesuai Akte Lahir">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="nama_ibu_ijazah" class="form-label">Nama Ibu Kandung</label>
-                        <input type="text" class="form-control" id="nama_ibu_ijazah" placeholder="Sesuai Akte Lahir">
-                    </div>
-                </div>
-
-                <div class="row mb-4">
-                    <div class="col-md-8">
-                        <label for="alamat_sekarang" class="form-label">Alamat Tinggal Saat Ini</label>
-                        <input type="text" class="form-control" id="alamat_sekarang">
-                    </div>
-                    <div class="col-md-4">
-                        <label for="no_hp" class="form-label">Nomor HP Aktif (WA)</label>
-                        <input type="tel" class="form-control" id="no_hp" value="085664515247">
-                    </div>
-                </div>
-
-                <h4 class="section-header mb-4 mt-5">C. Persyaratan Dokumen</h4>
-
-                <div class="table-responsive mb-4">
-                    <table class="table table-bordered table-upload">
+                    <table class="table table-bordered table-rincian">
                         <thead>
                             <tr class="table-light">
-                                <th>#</th>
-                                <th>Jenis Dokumen</th>
-                                <th>Status</th>
-                                <th>Aksi</th>
+                                <th>Deskripsi</th>
+                                <th class="text-end">Jumlah</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>1</td>
-                                <td>Pas Foto Resmi (Latar Merah) - **3x4**</td>
-                                <td><span class="badge bg-danger">Belum Diunggah</span></td>
-                                <td><input class="form-control form-control-sm" type="file" accept=".jpg,.png"></td>
+                                <td>UKT Golongan III</td>
+                                <td class="text-end">Rp 4.000.000</td>
                             </tr>
                             <tr>
-                                <td>2</td>
-                                <td>Bukti Lunas Biaya Wisuda</td>
-                                <td><span class="badge bg-warning text-dark">Menunggu Verifikasi</span></td>
-                                <td><button type="button" class="btn btn-sm btn-outline-secondary">Lihat File</button></td>
+                                <td>Denda Keterlambatan</td>
+                                <td class="text-end">Rp 0</td>
                             </tr>
                             <tr>
-                                <td>3</td>
-                                <td>Surat Keterangan Bebas Pustaka</td>
-                                <td><span class="badge bg-success">Terunggah</span></td>
-                                <td><button type="button" class="btn btn-sm btn-success text-white"><i class="fa-solid fa-check"></i> Sudah</button></td>
+                                <td>Biaya Administrasi Bank</td>
+                                <td class="text-end">Rp 5.000</td>
                             </tr>
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <th class="text-end">Total Tagihan</th>
+                                <th class="text-end total-tagihan">Rp 4.500.000</th>
+                            </tr>
+                        </tfoot>
                     </table>
-                </div>
-                
-                <div class="form-check mb-4">
-                    <input class="form-check-input" type="checkbox" id="persetujuan" required>
-                    <label class="form-check-label" for="persetujuan">
-                        Saya menyatakan semua data yang diinput benar dan siap diverifikasi.
-                    </label>
-                </div>
-
-                <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-primary btn-finalisasi">
-                        <i class="fa-solid fa-paper-plane me-2"></i> Finalisasi Pendaftaran
+                    
+                    <button class="btn btn-warning btn-keranjang mt-3">
+                        <i class="fa-solid fa-basket-shopping me-2"></i> Ajukan Permohonan Cicilan (Jika Memenuhi Syarat)
                     </button>
                 </div>
-            </form>
+            </div>
 
+            <div class="col-lg-5">
+                <div class="card card-panduan shadow-sm p-4 mb-4">
+                    <h4 class="section-header mb-4 text-white">Panduan Pembayaran</h4>
+                    
+                    <h5 class="mb-2"><i class="fa-solid fa-credit-card me-2 text-primary"></i> Virtual Account</h5>
+                    <p class="mb-1 fw-bold">Bank [Nama Bank Kampus]:</p>
+                    <p class="va-number mb-3">8888-123200037 (Nomor VA Anda)</p>
+
+                    <h5 class="mb-2 mt-4"><i class="fa-solid fa-circle-info me-2 text-primary"></i> Langkah Pembayaran</h5>
+                    <ol class="panduan-list">
+                        <li>Pilih menu Transfer/Pembayaran VA.</li>
+                        <li>Masukkan Nomor VA di atas.</li>
+                        <li>Pastikan nama tertera **Hartanto Dwi Putra Sembiring**.</li>
+                        <li>Konfirmasi dan selesaikan pembayaran.</li>
+                    </ol>
+                    
+                    <button class="btn btn-outline-primary btn-sm mt-3">
+                        <i class="fa-solid fa-file-pdf me-2"></i> Unduh Petunjuk Lengkap
+                    </button>
+                </div>
+            </div>
         </div>
 
         <div class="footer-info mt-5 pt-4 text-secondary small">

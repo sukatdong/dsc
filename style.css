@@ -1,15 +1,17 @@
 :root {
-    --color-primary: #007bff;     /* Biru Header */
-    --color-success: #28a745;     /* Hijau Lulus/Diterima */
-    --color-danger: #dc3545;      /* Merah Peringatan Akun/Tunggakan */
-    --color-bg: #f8f9fa;
+    --color-primary: #007bff;     /* Biru */
+    --color-success: #28a745;     /* Hijau (Lunas) */
+    --color-warning: #ffc107;     /* Kuning (Cicilan/Aksi) */
+    --color-danger: #dc3545;      /* Merah (Belum Lunas) */
+    --color-bg: #f4f7f9;
     --color-text: #212529;
-    --color-border: #dee2e6;
+    --color-dark-bg: #343a40;
+    --border-radius: 8px;
 }
 
 body {
     background-color: var(--color-bg);
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--color-text);
 }
 
@@ -17,110 +19,96 @@ body {
     max-width: 1200px;
 }
 
-/* 1. Header Atas */
+/* 1. Header */
 .navbar-top {
     background-color: var(--color-primary) !important;
 }
-.navbar-brand {
-    font-weight: 600;
-}
-
-/* 2. Judul dan Tab Navigasi */
 .main-title {
     font-weight: 600;
 }
-.custom-tabs .nav-link {
-    color: var(--color-text);
-    border: none;
-    border-radius: 0;
-    font-weight: 500;
+
+/* 2. Card Status (Top Bar) */
+.card-status {
+    background-color: #ffffff;
+    border-radius: var(--border-radius);
+    border: 1px solid #dee2e6;
 }
-.custom-tabs .nav-link.active {
+.card-status .status-label {
+    font-weight: 600;
+    color: var(--color-text);
+}
+.card-status .status-info {
+    color: var(--color-danger);
+    font-size: 0.95rem;
+}
+.status-badge {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: 5px;
+}
+.status-belum-bayar {
+    background-color: var(--color-danger);
+    color: #fff;
+}
+
+/* 3. Card Detail Tagihan (Kiri) */
+.card-detail {
+    border-radius: var(--border-radius);
+}
+.card-detail .section-header {
+    font-weight: 600;
     color: var(--color-primary);
-    border-bottom: 2px solid var(--color-primary);
-    background-color: transparent;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 5px;
+}
+.table-rincian th, .table-rincian td {
+    font-size: 0.95rem;
+}
+.table-rincian tfoot .total-tagihan {
+    font-size: 1.1rem;
+    color: var(--color-danger);
+}
+.btn-keranjang {
+    background-color: var(--color-warning) !important;
+    border-color: var(--color-warning) !important;
+    color: var(--color-text) !important;
     font-weight: 600;
 }
 
-/* 3. Konten Utama Card */
-.card {
-    border-radius: 4px;
-    border: 1px solid #dee2e6;
-}
-
-/* Alert Kustom */
-.alert-success-custom {
-    background-color: var(--color-success) !important;
+/* 4. Card Panduan Pembayaran (Kanan) */
+.card-panduan {
+    background-color: var(--color-dark-bg) !important;
     color: #fff;
-    font-weight: 500;
-    padding: 1rem;
+    border-radius: var(--border-radius);
+}
+.card-panduan .section-header {
+    color: var(--color-warning);
+    border-bottom: 2px solid #5a6268;
+    padding-bottom: 5px;
+}
+.card-panduan .va-number {
+    font-size: 1.2rem;
+    background-color: #5a6268;
+    padding: 5px 10px;
     border-radius: 4px;
+    color: #ffc107;
 }
-.alert-danger-custom {
-    background-color: var(--color-danger) !important;
-    color: #fff;
-    font-weight: 400;
-    padding: 1rem;
-    border-radius: 4px;
+.card-panduan .text-primary {
+    color: var(--color-warning) !important; /* Mengubah ikon menjadi kuning */
 }
-.alert-wisuda {
-    background-color: #d4edda; /* Hijau muda */
-    color: #155724;
-    border: 1px solid #c3e6cb;
-    font-weight: 500;
+.panduan-list {
+    font-size: 0.9rem;
+    padding-left: 20px;
 }
-
-/* 4. Tabel Data (Nama, NIM, dll.) */
-.table-data-yudisium {
-    border: 1px solid #dee2e6;
+.btn-outline-primary {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
     background-color: #fff;
 }
-.table-data-yudisium td {
-    border: none;
-    padding: 0.75rem 1rem;
-    font-size: 0.95rem;
-}
-.table-data-yudisium tr:nth-child(even) {
-    background-color: #f7f7f7;
-}
-.table-data-yudisium .col-label {
-    width: 250px;
-    font-weight: 500;
-}
-.table-data-yudisium .col-value {
-    font-weight: 400;
-}
 
-/* 5. Tabel Status Pengajuan */
-.table-status thead th {
-    font-weight: 600;
-    background-color: #f7f7f7;
-    border-bottom: 2px solid var(--color-border);
-}
-.table-status tbody td {
-    font-size: 0.95rem;
-    vertical-align: middle;
-}
-.table-status .badge {
-    padding: 0.5em 1em;
-    font-size: 0.85em;
-    font-weight: 600;
-}
-
-/* Badge Tunggakan */
-.badge.bg-danger {
-    background-color: var(--color-danger) !important;
-    color: #fff;
-}
-
-/* 6. Footer */
+/* 5. Footer */
 .footer-info {
     color: #adb5bd;
-}
-
-/* Styling untuk Badge Tunggakan di Tab 1 */
-#tab-pengumuman .badge.bg-danger {
-    /* Menyesuaikan warna badge "Tidak ada tunggakan" agar sesuai gambar (hijau) */
-    background-color: var(--color-success) !important;
-    color: #fff;
 }
