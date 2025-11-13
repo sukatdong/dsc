@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Mahasiswa - Pengajuan Yudisium (Single Scroll)</title>
+    <title>Portal Mahasiswa - Pengumuman Wisuda</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <style>
         :root {
             --color-primary: #007bff;     /* Biru Header */
-            --color-success: #28a745;     /* Hijau Lulus/Diterima */
-            --color-danger: #dc3545;      /* Merah Peringatan Akun/Tunggakan */
+            --color-success: #28a745;     /* Hijau Pengumuman */
             --color-bg: #f8f9fa;
             --color-text: #212529;
             --color-border: #dee2e6;
@@ -35,82 +34,75 @@
             font-weight: 600;
         }
 
-        /* 2. Judul */
+        /* 2. Judul dan Subtitle */
         .main-title {
             font-weight: 600;
+            font-size: 2rem;
         }
-        .section-header {
-            font-weight: 600;
-            color: var(--color-text);
-            padding-bottom: 5px;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #f0f0f0;
+        .subtitle {
+            margin-top: -5px;
+            font-size: 1rem;
         }
 
-        /* Alert Kustom */
-        .alert-success-custom {
-            background-color: var(--color-success) !important;
-            color: #fff;
-            font-weight: 500;
-            padding: 1rem;
-            border-radius: 4px;
-        }
-        .alert-danger-custom {
-            background-color: var(--color-danger) !important;
-            color: #fff;
-            font-weight: 400;
-            padding: 1rem;
-            border-radius: 4px;
-        }
-        .alert-wisuda {
-            background-color: #d4edda; /* Hijau muda */
-            color: #155724;
-            border: 1px solid #c3e6cb;
-            font-weight: 500;
-        }
-
-        /* 3. Tabel Data (Nama, NIM, dll.) */
-        .table-data-yudisium {
-            border: 1px solid #dee2e6;
-            background-color: #fff;
-        }
-        .table-data-yudisium td {
-            border: none;
-            padding: 0.75rem 1rem;
-            font-size: 0.95rem;
-        }
-        .table-data-yudisium tr:nth-child(even) {
-            background-color: #f7f7f7;
-        }
-        .table-data-yudisium .col-label {
-            width: 250px;
-            font-weight: 500;
+        /* 3. Card Pengumuman */
+        .card-announcement {
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
         }
         
-        /* 4. Tabel Status Pengajuan */
-        .table-status thead th {
-            font-weight: 600;
-            background-color: #f7f7f7;
-            border-bottom: 2px solid var(--color-border);
-        }
-        .table-status tbody td {
-            font-size: 0.95rem;
-            vertical-align: middle;
-        }
-        .table-status .badge {
-            padding: 0.5em 1em;
-            font-size: 0.85em;
+        .announcement-header {
+            background-color: var(--color-success);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            font-size: 1.2rem;
             font-weight: 600;
         }
 
-        /* Styling untuk Badge Tunggakan di Tab 1 (Sesuai Gambar: Hijau) */
-        .tunggakan-badge.bg-danger {
-            background-color: var(--color-success) !important;
-            color: #fff;
+        .announcement-body {
+            padding: 1.5rem;
         }
 
-        /* 5. Footer */
+        /* Poin-poin Detail */
+        .detail-item {
+            display: flex;
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        .detail-label {
+            width: 200px;
+            font-weight: 500;
+            color: #495057;
+        }
+        .detail-value {
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        /* Alur Pendaftaran */
+        .alur-pendaftaran {
+            margin-top: 30px;
+        }
+        .alur-pendaftaran ol {
+            padding-left: 20px;
+        }
+        .alur-pendaftaran li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        
+        /* Tombol Aksi */
+        .btn-action {
+            background-color: var(--color-primary);
+            border-color: var(--color-primary);
+            font-weight: 600;
+            padding: 10px 25px;
+            margin-top: 15px;
+        }
+
+        /* 4. Footer */
         .footer-info {
             color: #adb5bd;
         }
@@ -126,99 +118,68 @@
 
     <div class="container-fluid content-container p-4">
 
-        <h2 class="main-title mb-4">Pengajuan Yudisium</h2>
-        
-        <div class="card p-4 shadow-sm mb-4">
+        <h2 class="main-title mb-1">Pengumuman Wisuda</h2>
+        <p class="subtitle text-muted mb-4">Informasi lengkap pendaftaran dan pelaksanaan upacara wisuda.</p>
+
+        <div class="card card-announcement shadow-sm mb-4">
             
-            <h4 class="section-header">Pengumuman & Status Kelulusan</h4>
+            <div class="announcement-header">
+                <i class="fa-solid fa-graduation-cap me-2"></i> Pengumuman Wisuda Periode XXX Tahun 2026
+            </div>
             
-            <p class="mb-3">Assalamualaikum wr. wb.</p>
-            <p class="mb-4">Pendaftaran yudisium bulan **November** dilakukan mulai tanggal **1 November sampai 26 November 2025** jam 12.00 WIB. Terima kasih.</p>
+            <div class="announcement-body">
+                
+                <p class="mb-4">Disampaikan kepada seluruh calon wisudawan/wisudawati yang telah menyelesaikan studi dan lulus Yudisium, berikut adalah jadwal penting terkait pelaksanaan wisuda:</p>
 
-            <div class="alert alert-success-custom mb-3" role="alert">
-                Selamat anda sudah dinyatakan lulus
-            </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <span class="detail-label">Tanggal Pelaksanaan</span>
+                            <span class="detail-value">Sabtu, 12 April 2026</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <span class="detail-label">Waktu</span>
+                            <span class="detail-value">08.00 WIB s/d Selesai</span>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="alert alert-danger-custom mb-4" role="alert">
-                Sebagai informasi, setelah pengajuan yudisium disetujui maka status Anda akan dinyatakan lulus. Selanjutnya, akses ke aplikasi BIMA akan dinonaktifkan dan akun email mahasiswa Anda akan segera ditutup. Mohon pastikan seluruh data atau informasi penting telah disimpan sebelum akses ke layanan tersebut dihentikan. Terima kasih.
-            </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <span class="detail-label">Lokasi</span>
+                            <span class="detail-value">Gedung Auditorium Utama Kampus</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <span class="detail-label">Batas Pendaftaran Akhir</span>
+                            <span class="detail-value">Jumat, 28 Maret 2026</span>
+                        </div>
+                    </div>
+                </div>
 
-            <h5 class="mt-4 mb-3">Dokumen Pengajuan Yudisium</h5>
-            <table class="table table-bordered table-data-yudisium">
-                <tr>
-                    <td class="col-label">Nim</td>
-                    <td class="col-value">123200037</td>
-                </tr>
-                <tr>
-                    <td class="col-label">Nama</td>
-                    <td class="col-value">HARTANTO DWI PUTRA SEMBIRING</td>
-                </tr>
-                <tr>
-                    <td class="col-label">Email</td>
-                    <td class="col-value">hartantasembiring91@gmail.com</td>
-                </tr>
-                <tr>
-                    <td class="col-label">Nomor Telepon</td>
-                    <td class="col-value">085664515247</td>
-                </tr>
-                <tr>
-                    <td class="col-label">Tunggakan</td>
-                    <td class="col-value"><span class="badge tunggakan-badge bg-danger">Tidak ada tunggakan</span></td>
-                </tr>
-            </table>
-        </div>
-        
-        <div class="card p-4 shadow-sm mb-4">
+                <div class="alur-pendaftaran">
+                    <h5 class="mb-3">Alur Pendaftaran Wisuda Online:</h5>
+                    <ol>
+                        <li>Pastikan status akademik Anda sudah **LULUS Yudisium** di Portal Mahasiswa.</li>
+                        <li>Lengkapi data dan upload dokumen persyaratan (pas foto, surat bebas pinjam perpustakaan, dll.) di menu **Akademik > Pendaftaran Wisuda**.</li>
+                        <li>Lakukan pembayaran biaya wisuda ke rekening yang tertera.</li>
+                        <li>Verifikasi akhir dilakukan oleh BAAK. Bukti pendaftaran dan pengambilan toga dapat dicetak setelah status disetujui.</li>
+                    </ol>
+                </div>
+                
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-primary btn-action">
+                        <i class="fa-solid fa-clipboard-list me-2"></i> Lanjut ke Pendaftaran
+                    </button>
+                </div>
 
-            <h4 class="section-header">Data Yudisium & Status Permohonan</h4>
-
-            <div class="alert alert-wisuda mb-4" role="alert">
-                Silakan mengajukan pendaftaran wisuda di menu Akademik > Pendaftaran Wisuda
-            </div>
-
-            <h5 class="mb-3">Hasil Pengajuan</h5>
-            <table class="table table-bordered table-data-yudisium mb-5">
-                <tr>
-                    <td class="col-label">Tanggal Masuk</td>
-                    <td class="col-value">2020-09-28</td>
-                </tr>
-                <tr>
-                    <td class="col-label">Tanggal Yudisium</td>
-                    <td class="col-value">2024-10-30</td>
-                </tr>
-                <tr>
-                    <td class="col-label">Nomor SK Yudisium</td>
-                    <td class="col-value">10/UN62.12/KM/2024</td>
-                </tr>
-                <tr>
-                    <td class="col-label">Lama Studi</td>
-                    <td class="col-value">4 tahun 1 bulan</td>
-                </tr>
-            </table>
-
-            <h5 class="mb-3">Status Pengajuan</h5>
-            <div class="table-responsive">
-                <table class="table table-status">
-                    <thead>
-                        <tr>
-                            <th>Waktu Pengajuan</th>
-                            <th>Waktu Respon</th>
-                            <th>Status</th>
-                            <th>Catatan</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>2024-10-24 19:42:50</td>
-                            <td>2024-10-29 09:31:02</td>
-                            <td><span class="badge bg-success">Diterima</span></td>
-                            <td>-</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
-        
+
         <div class="footer-info mt-5 pt-4 text-secondary small">
             Pusat Kajian Teknologi Informasi UPN 'VETERAN' Yogyakarta.
         </div>
