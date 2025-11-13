@@ -1,160 +1,119 @@
 :root {
-    --color-primary: #007bff; /* Biru Primer */
-    --color-gray-light: #e9ecef; /* Abu-abu Toggle Inaktif */
-    --color-text: #343a40;
+    --color-primary: #007bff;     /* Biru Header */
+    --color-success: #28a745;     /* Hijau (Submit Button/Success) */
+    --color-warning: #ffc107;     /* Kuning (Peringatan) */
+    --color-danger: #dc3545;      /* Merah (Belum Ada Dokumen) */
+    --color-bg: #f8f9fa;
+    --color-text: #212529;
     --border-radius: 8px;
-    --card-bg: white;
 }
 
 body {
-    background: url('background_kampus.jpg') no-repeat center center fixed; /* Ganti dengan gambar latar Anda */
-    background-size: cover;
+    background-color: var(--color-bg);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--color-text);
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
 }
 
-.login-wrapper {
-    position: relative;
-    z-index: 10;
+.content-container {
+    max-width: 1200px; 
 }
 
-.login-box {
-    background-color: var(--card-bg);
-    padding: 35px;
+/* 1. Header (Consistency) */
+.navbar-top {
+    background-color: var(--color-primary) !important;
+}
+.navbar-brand {
+    font-weight: 600;
+}
+
+/* 2. Judul dan Form Layout */
+.main-title {
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+.subtitle {
+    margin-top: -5px;
+}
+
+.card-form {
     border-radius: var(--border-radius);
-    max-width: 400px;
-    width: 100%;
-    /* Shadow yang halus dan modern */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border: 1px solid #dee2e6;
 }
 
-/* Logo Placeholder */
-.logo-placeholder {
-    width: 100px;
-    height: auto;
+.section-header {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--color-primary); /* Judul bagian berwarna biru */
+    padding-bottom: 5px;
+    border-bottom: 2px solid #f0f0f0;
+    margin-top: 5px;
 }
-.logo-placeholder img {
-    /* Ganti dengan URL logo SADEWA yang sesuai */
-    content: url('https://upload.wikimedia.org/wikipedia/commons/e/e0/SAD_SADEWA.png'); 
-    max-width: 100%;
-    height: auto;
-}
-.system-title {
-    font-size: 0.9rem;
+
+/* Styling Form Input */
+.form-label-custom {
     font-weight: 600;
     color: #495057;
+    margin-bottom: 0.3rem;
+    display: block;
+}
+.form-control, .form-select {
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    padding: 0.75rem;
+    font-size: 0.95rem;
+}
+.form-control[readonly] {
+    background-color: #e9ecef !important;
+}
+.form-control-sm {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.85rem;
 }
 
-/* 1. Toggle Button (Mahasiswa / Inbound) */
-.toggle-group {
-    display: flex;
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    margin-bottom: 25px !important;
-    border: 1px solid #ced4da;
-}
-.toggle-btn {
-    flex-grow: 1;
-    border: none;
-    padding: 10px 0;
+/* Tabel Upload Dokumen */
+.table-upload thead th {
     font-weight: 600;
+    background-color: #f7f7f7;
+    color: #495057;
+}
+.table-upload tbody td {
+    vertical-align: middle;
+    font-size: 0.9rem;
+}
+
+/* Badge Status Dokumen */
+.badge {
+    padding: 0.5em 0.8em;
+    border-radius: 50rem;
+    font-size: 0.8em;
+    font-weight: 600;
+}
+.bg-success { background-color: var(--color-success) !important; }
+.bg-danger { background-color: var(--color-danger) !important; }
+
+/* Alert Peringatan */
+.alert-warning-custom {
+    background-color: #fff3cd;
+    color: #856404;
+    border-left: 5px solid var(--color-warning);
+    border-radius: 4px;
+    padding: 1rem;
     font-size: 0.95rem;
-    cursor: pointer;
+}
+
+/* Tombol Submit */
+.btn-submit {
+    background-color: var(--color-success) !important;
+    border-color: var(--color-success) !important;
+    font-weight: 600;
+    padding: 10px 25px;
     transition: background-color 0.2s;
 }
-.active-toggle {
-    background-color: var(--color-primary);
-    color: white;
-}
-.inactive-toggle {
-    background-color: var(--color-gray-light);
-    color: var(--color-text);
+.btn-submit:hover {
+    background-color: #1e7e34 !important;
 }
 
-/* 2. Input Form */
-.custom-input .input-group-text {
-    background-color: #f8f9fa;
-    border: 1px solid #ced4da;
-    border-right: none;
-    color: var(--color-primary);
-    border-top-left-radius: var(--border-radius);
-    border-bottom-left-radius: var(--border-radius);
-}
-.custom-input .form-control {
-    border: 1px solid #ced4da;
-    border-left: none;
-    font-size: 1rem;
-    padding: 10px 15px;
-    border-top-right-radius: var(--border-radius);
-    border-bottom-right-radius: var(--border-radius);
-}
-.custom-input .form-control:focus {
-    box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
-    border-color: var(--color-primary);
-}
-
-/* 3. reCAPTCHA Placeholder */
-.captcha-container {
-    display: flex;
-    justify-content: flex-start;
-}
-.captcha-box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%; /* Atur lebar sesuai kebutuhan reCAPTCHA */
-    border: 1px solid #ced4da;
-    padding: 8px;
-    border-radius: 3px;
-    background-color: #f9f9f9;
-}
-.captcha-box .form-check-input {
-    width: 20px;
-    height: 20px;
-    margin-right: 8px;
-}
-.recaptcha-logo {
-    font-size: 0.7rem;
-    color: #999;
-    text-align: right;
-}
-
-/* 4. Tombol Login */
-.btn-login {
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
-    font-weight: 700;
-    padding: 12px;
-    font-size: 1.1rem;
-    border-radius: var(--border-radius);
-}
-
-/* 5. Lupa Password */
-.forgot-password-link {
-    color: #6c757d;
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-.forgot-password-link:hover {
-    color: var(--color-primary);
-}
-
-/* 6. Footer Text */
-.login-footer-text {
-    position: absolute;
-    bottom: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
-    font-size: 0.8rem;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    width: 100%;
-    text-align: center;
+/* 4. Footer */
+.footer-info {
+    color: #adb5bd;
 }
