@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Campus - Formulir Registrasi</title>
+    <title>Mandiri Youthcard - Bayar UKT</title>
     <style>
         /* === TEMA & FONT === */
         :root {
@@ -32,15 +32,21 @@
             min-height: 100vh;
             background-color: white;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
         }
 
         /* === HEADER / APP BAR === */
         .header {
-            background-color: var(--mandiri-blue-dark);
-            color: white;
+            background-color: white;
+            color: var(--text-dark);
             padding: var(--spacing-m);
             display: flex;
             align-items: center;
+            border-bottom: 1px solid #eee; 
+            position: sticky;
+            top: 0;
+            z-index: 50;
         }
         .header h1 {
             font-size: 1.1em;
@@ -48,56 +54,23 @@
             flex-grow: 1;
             text-align: center;
             font-weight: 600;
+            color: var(--mandiri-blue-dark);
         }
         .header .icon {
             font-size: 1.5em;
             cursor: pointer;
+            color: var(--mandiri-blue-dark);
         }
-        
+
         /* === CONTENT UTAMA === */
         .content {
             padding: var(--spacing-l) var(--spacing-m);
-        }
-        
-        /* === PROGRESS BAR (Sesuai Flowchart) === */
-        .progress-bar-container {
-            margin-bottom: var(--spacing-l);
-        }
-        .progress-bar {
-            height: 5px;
-            background-color: #eee;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        .progress-bar div {
-            height: 100%;
-            width: 33%; /* Simulasi Langkah 1 dari 3 */
-            background-color: var(--mandiri-yellow);
-            transition: width 0.3s;
-        }
-        .progress-text {
-            font-size: 0.8em;
-            color: var(--text-dark);
-            margin-top: var(--spacing-xs);
-            text-align: right;
-            font-weight: 500;
+            flex-grow: 1;
         }
 
         /* === FORM INPUT STYLING === */
-        .form-section {
-            margin-bottom: var(--spacing-l);
-            padding-bottom: var(--spacing-m);
-            border-bottom: 1px solid #f0f0f0;
-        }
-        .form-section h3 {
-            color: var(--mandiri-blue-dark);
-            font-size: 1.1em;
-            margin-bottom: var(--spacing-m);
-            border-left: 4px solid var(--mandiri-yellow);
-            padding-left: var(--spacing-s);
-        }
         .input-group {
-            margin-bottom: var(--spacing-m);
+            margin-bottom: var(--spacing-l);
         }
         .input-group label {
             display: block;
@@ -106,32 +79,128 @@
             font-weight: 600;
             margin-bottom: var(--spacing-xs);
         }
-        .input-group input, .input-group select {
+        .input-field-container {
+            position: relative;
+        }
+        .input-field-container input, .input-field-container select {
             width: 100%;
-            padding: var(--spacing-s);
+            padding: var(--spacing-s) var(--spacing-m);
             box-sizing: border-box;
             border: 1px solid #ddd;
             border-radius: var(--border-radius-m);
             font-size: 0.9em;
             transition: border-color 0.2s;
         }
-        .input-group input:focus, .input-group select:focus {
+        .input-field-container input:focus, .input-field-container select:focus {
             border-color: var(--mandiri-blue-light);
             outline: none;
             box-shadow: 0 0 0 3px rgba(121, 197, 255, 0.3);
         }
-        
-        /* === TOMBOL UTAMA === */
-        .btn-submit {
+
+        /* --- Input dengan Icon --- */
+        .input-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--mandiri-blue-dark);
+            font-size: 1.2em;
+        }
+
+        /* === TOMBOL CEK TAGIHAN === */
+        .btn-cek {
             display: block;
             width: 100%;
             padding: var(--spacing-m);
             background-color: var(--mandiri-blue-dark);
             color: white;
             border: none;
+            border-radius: var(--border-radius-m);
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.2s;
+        }
+        .btn-cek:hover {
+            background-color: #003a7a;
+        }
+        .btn-cek:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        /* === DETAIL TAGIHAN CARD (Simulasi Hasil Cek) === */
+        .tagihan-card {
+            margin-top: var(--spacing-l);
+            padding: var(--spacing-m);
+            background-color: #e6f0ff; /* Biru muda */
+            border-radius: var(--border-radius-m);
+            border: 1px solid #d3e5ff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        .tagihan-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-s);
+            border-bottom: 1px solid #cceeff;
+            padding-bottom: var(--spacing-xs);
+        }
+        .tagihan-header h3 {
+            color: var(--mandiri-blue-dark);
+            font-size: 1em;
+            margin: 0;
+        }
+        .tagihan-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            font-size: 0.9em;
+            color: var(--text-dark);
+        }
+        .tagihan-row.total {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #cc0000; /* Merah untuk jumlah tagihan */
+            border-top: 1px dashed #cceeff;
+            margin-top: var(--spacing-s);
+            padding-top: var(--spacing-s);
+        }
+        .tagihan-status {
+            font-size: 0.8em;
+            color: #008000; /* Hijau untuk status "Aktif/Ada Tagihan" */
+            font-weight: 600;
+        }
+        .point-info {
+            background-color: var(--mandiri-yellow);
+            color: var(--mandiri-blue-dark);
+            padding: 5px 10px;
+            border-radius: var(--border-radius-m);
+            font-size: 0.8em;
+            font-weight: 600;
+            text-align: center;
+            margin-top: var(--spacing-s);
+        }
+
+        /* === FOOTER BUTTON === */
+        .footer-button {
+            padding: var(--spacing-m);
+            border-top: 1px solid #eee;
+            background-color: white;
+            position: sticky;
+            bottom: 0;
+        }
+        .btn-bayar {
+            display: block;
+            width: 100%;
+            padding: var(--spacing-m);
+            background-color: var(--mandiri-yellow);
+            color: var(--mandiri-blue-dark);
+            border: none;
             border-radius: 50px;
             font-size: 1em;
-            margin-top: var(--spacing-l);
             font-weight: 600;
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
@@ -141,85 +210,69 @@
 <body>
     <div class="app-container">
         <div class="header">
-            <span class="icon">&#x2190;</span> <h1>Registrasi E-Campus Mahasiswa</h1>
-            <span class="icon">&#x1F4BE;</span> </div>
+            <span class="icon">&#x2190;</span> 
+            <h1>Bayar UKT & Biaya Studi</h1>
+            <span class="icon">&#x1F4BE;</span> 
+        </div>
 
         <div class="content">
-            <div class="progress-bar-container">
-                <div class="progress-bar"><div style="width: 33%;"></div></div>
-                <div class="progress-text">Langkah 1 dari 3: Data Diri</div>
+            <div class="input-group">
+                <label for="kampus_id">Penyedia Jasa (Perguruan Tinggi)</label>
+                <div class="input-field-container">
+                    <select id="kampus_id" required>
+                        <option value="">-- Cari atau Pilih Kampus Mitra --</option>
+                        <option value="usu">Universitas Sumatera Utara (USU)</option>
+                        <option value="unimed">Universitas Negeri Medan (Unimed)</option>
+                        <option value="umsu">Universitas Muhammadiyah Sumatera Utara (UMSU)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <label for="nim_va">Nomor Pembayaran (NIM / Virtual Account)</label>
+                <div class="input-field-container">
+                    <input type="text" id="nim_va" placeholder="Masukkan NIM atau Kode VA" required>
+                    <span class="input-icon">&#x1F4C3;</span> </div>
             </div>
 
-            <form>
-                <div class="form-section">
-                    <h3>Data Pribadi Mahasiswa</h3>
-                    
-                    <div class="input-group">
-                        <label for="nama_lengkap">Nama Lengkap (Sesuai KTP)</label>
-                        <input type="text" id="nama_lengkap" placeholder="Contoh: Hartanta Dwi Putra" required>
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="nik">Nomor Induk Kependudukan (NIK)</label>
-                        <input type="text" id="nik" maxlength="16" placeholder="Masukkan 16 digit NIK" required>
-                    </div>
+            <button class="btn-cek">Cek Tagihan</button>
 
-                    <div class="input-group">
-                        <label for="alamat">Alamat Tinggal Saat Ini (Box 3)</label>
-                        <input type="text" id="alamat" placeholder="Jalan, Nomor Rumah, Kota" required>
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="kontak">Nomor Kontak Aktif (Box 3)</label>
-                        <input type="tel" id="kontak" placeholder="Contoh: 0812xxxxxx" required>
-                    </div>
+            <div class="tagihan-card" style="display: block;"> 
+                <div class="tagihan-header">
+                    <h3>Detail Tagihan Aktif</h3>
+                    <span class="tagihan-status">&#x2705; Aktif</span>
+                </div>
+                
+                <div class="tagihan-row">
+                    <span>Nama Pelanggan</span>
+                    <span>HARTANTA DWI PUTRA</span>
+                </div>
+                <div class="tagihan-row">
+                    <span>Perguruan Tinggi</span>
+                    <span>Univ. Sumatera Utara (USU)</span>
+                </div>
+                <div class="tagihan-row">
+                    <span>NIM/VA</span>
+                    <span>20191200XX</span>
+                </div>
+                <div class="tagihan-row">
+                    <span>Keterangan</span>
+                    <span>UKT Semester Ganjil 2025/2026</span>
                 </div>
 
-                <div class="form-section">
-                    <h3>Data Akademik</h3>
-                    
-                    <div class="input-group">
-                        <label for="kampus">Perguruan Tinggi</label>
-                        <select id="kampus" required>
-                            <option value="">-- Pilih Kampus --</option>
-                            <option value="usu">Universitas Sumatera Utara (USU)</option>
-                            <option value="unimed">Universitas Negeri Medan (Unimed)</option>
-                            <option value="umsu">Universitas Muhammadiyah Sumatera Utara (UMSU)</option>
-                            </select>
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="nim">Nomor Induk Mahasiswa (NIM)</label>
-                        <input type="text" id="nim" placeholder="Masukkan NIM Anda" required>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="fakultas">Fakultas / Program Studi</label>
-                        <input type="text" id="fakultas" placeholder="Contoh: Ilmu Komputer" required>
-                    </div>
+                <div class="tagihan-row total">
+                    <span>Jumlah Tagihan (Wajib Dibayar)</span>
+                    <span>Rp 4.500.000</span>
                 </div>
 
-                <div class="form-section" style="border-bottom: none;">
-                    <h3>Informasi Tambahan</h3>
-                    
-                    <div class="input-group">
-                        <label for="nama_ortu">Nama Orang Tua / Wali (Box 3)</label>
-                        <input type="text" id="nama_ortu" placeholder="Nama Lengkap Orang Tua" required>
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="fasilitas">Fasilitas Youthcard yang Diminati (Box 3)</label>
-                        <select id="fasilitas" required>
-                            <option value="ktm_atm">KTM + ATM (Wajib)</option>
-                            <option value="pinjaman_mikro">Pinjaman Mikro Pendidikan (Youth-Loan)</option>
-                            <option value="akses_poin">Akses Poin Ganda</option>
-                        </select>
-                    </div>
+                <div class="point-info">
+                    &#x2B50; Bayar Sekarang & Dapatkan **900 Livin'Poin**!
                 </div>
+            </div>
+        </div>
 
-
-                <button type="submit" class="btn-submit">Lanjutkan ke Verifikasi (Langkah 2)</button>
-            </form>
+        <div class="footer-button">
+            <button class="btn-bayar">Bayar Tagihan Rp 4.500.000</button>
         </div>
     </div>
 </body>
