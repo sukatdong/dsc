@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mandiri Youthcard - Pengajuan Pinjaman (Refined)</title>
+    <title>E-Campus - Formulir Registrasi</title>
     <style>
         /* === TEMA & FONT === */
         :root {
@@ -34,14 +34,13 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
         }
 
-        /* === HEADER / APP BAR (Clean Livin' Style) === */
+        /* === HEADER / APP BAR === */
         .header {
-            background-color: white;
-            color: var(--text-dark);
+            background-color: var(--mandiri-blue-dark);
+            color: white;
             padding: var(--spacing-m);
             display: flex;
             align-items: center;
-            border-bottom: 1px solid #eee; /* Garis pemisah halus */
         }
         .header h1 {
             font-size: 1.1em;
@@ -49,164 +48,77 @@
             flex-grow: 1;
             text-align: center;
             font-weight: 600;
-            color: var(--mandiri-blue-dark);
         }
         .header .icon {
             font-size: 1.5em;
             cursor: pointer;
-            color: var(--mandiri-blue-dark);
         }
-        .header .icon:first-child {
-            margin-left: -5px;
-        }
-
+        
         /* === CONTENT UTAMA === */
         .content {
             padding: var(--spacing-l) var(--spacing-m);
         }
-        .info-card {
-            background-color: #e6f0ff; 
-            border: 1px solid #d3e5ff;
-            padding: var(--spacing-m);
-            border-radius: var(--border-radius-m);
+        
+        /* === PROGRESS BAR (Sesuai Flowchart) === */
+        .progress-bar-container {
             margin-bottom: var(--spacing-l);
         }
-        .info-card h3 {
-            color: var(--mandiri-blue-dark);
-            font-size: 1em;
-            margin-top: 0;
-            margin-bottom: var(--spacing-xs);
+        .progress-bar {
+            height: 5px;
+            background-color: #eee;
+            border-radius: 5px;
+            overflow: hidden;
         }
-        .info-card p {
-            font-size: 0.9em;
-            color: var(--text-secondary);
-            margin: 0;
+        .progress-bar div {
+            height: 100%;
+            width: 33%; /* Simulasi Langkah 1 dari 3 */
+            background-color: var(--mandiri-yellow);
+            transition: width 0.3s;
+        }
+        .progress-text {
+            font-size: 0.8em;
+            color: var(--text-dark);
+            margin-top: var(--spacing-xs);
+            text-align: right;
+            font-weight: 500;
         }
 
-        /* === FORM INPUT === */
+        /* === FORM INPUT STYLING === */
+        .form-section {
+            margin-bottom: var(--spacing-l);
+            padding-bottom: var(--spacing-m);
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .form-section h3 {
+            color: var(--mandiri-blue-dark);
+            font-size: 1.1em;
+            margin-bottom: var(--spacing-m);
+            border-left: 4px solid var(--mandiri-yellow);
+            padding-left: var(--spacing-s);
+        }
+        .input-group {
+            margin-bottom: var(--spacing-m);
+        }
         .input-group label {
             display: block;
             font-size: 0.85em;
             color: var(--text-dark);
             font-weight: 600;
-            margin-bottom: var(--spacing-s);
-            margin-top: var(--spacing-l);
+            margin-bottom: var(--spacing-xs);
         }
-        /* Styling Nominal Input (Lebih Menonjol) */
-        .input-nominal-container {
-            display: flex;
-            align-items: center;
-            border: 2px solid var(--mandiri-blue-light);
-            border-radius: var(--border-radius-m);
-            padding: var(--spacing-s) var(--spacing-m);
-            transition: border-color 0.3s;
-        }
-        .input-nominal-container:focus-within {
-             border-color: var(--mandiri-blue-dark);
-        }
-        .input-nominal-container span {
-            font-size: 1.2em;
-            color: var(--mandiri-blue-dark);
-            margin-right: var(--spacing-s);
-            font-weight: bold;
-        }
-        .input-nominal {
-            border: none;
-            padding: 0;
-            flex-grow: 1;
-            font-size: 1.8em;
-            font-weight: bold;
-            color: var(--mandiri-blue-dark);
-            outline: none; /* Hilangkan border fokus bawaan */
-            text-align: right;
-        }
-        
-        /* === TENOR SELECTION (Menggunakan Grid) === */
-        .tenor-selection {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--spacing-s);
-            margin-top: var(--spacing-m);
-        }
-        .tenor-option {
+        .input-group input, .input-group select {
+            width: 100%;
             padding: var(--spacing-s);
-            border: 2px solid #ddd;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
             border-radius: var(--border-radius-m);
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s;
             font-size: 0.9em;
-            color: var(--text-dark);
+            transition: border-color 0.2s;
         }
-        .tenor-option:hover {
-            background-color: #f0f0f0;
-        }
-        .tenor-option.active {
-            border-color: var(--mandiri-blue-dark);
-            background-color: #e6f0ff;
-            font-weight: bold;
-            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-        }
-        .tenor-option span {
-            display: block;
-            font-size: 1.1em;
-            font-weight: bold;
-            color: var(--mandiri-blue-dark);
-            margin-bottom: 2px;
-        }
-
-        /* === SIMULASI PERHITUNGAN === */
-        .simulasi-box {
-            border-top: 1px solid #eee;
-            margin-top: var(--spacing-l);
-            padding-top: var(--spacing-m);
-            background-color: #fcfcfc;
-            padding: var(--spacing-m);
-            border-radius: var(--border-radius-m);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
-        .simulasi-row {
-            display: flex;
-            justify-content: space-between;
-            padding: var(--spacing-xs) 0;
-            font-size: 0.9em;
-            color: var(--text-dark);
-        }
-        .simulasi-row.total {
-            font-weight: bold;
-            font-size: 1em;
-            color: var(--mandiri-blue-dark);
-            border-top: 1px solid #ddd;
-            margin-top: var(--spacing-s);
-            padding-top: var(--spacing-s);
-        }
-        
-        /* Frekuensi Pembayaran (Toggle yang Lebih Baik) */
-        .tenor-type-selection {
-            display: flex;
-            justify-content: space-around;
-            background-color: #f0f0f0;
-            border-radius: 50px; /* Bentuk kapsul */
-            padding: 3px;
-            margin-top: var(--spacing-s);
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
-        .tenor-type-option {
-            flex: 1;
-            padding: var(--spacing-s);
-            border-radius: 50px;
-            font-size: 0.8em;
-            font-weight: 500;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            color: var(--text-secondary);
-        }
-        .tenor-type-option.active {
-            background-color: white;
-            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-            font-weight: bold;
-            color: var(--mandiri-blue-dark);
+        .input-group input:focus, .input-group select:focus {
+            border-color: var(--mandiri-blue-light);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(121, 197, 255, 0.3);
         }
         
         /* === TOMBOL UTAMA === */
@@ -229,64 +141,85 @@
 <body>
     <div class="app-container">
         <div class="header">
-            <span class="icon">&#x2190;</span> <h1>Pengajuan Youth-Loan</h1>
-            <span class="icon">&#x2699;</span> </div>
+            <span class="icon">&#x2190;</span> <h1>Registrasi E-Campus Mahasiswa</h1>
+            <span class="icon">&#x1F4BE;</span> </div>
 
         <div class="content">
-            <div class="info-card">
-                <h3>&#x26A1; Pinjaman Mikro Cepat</h3>
-                <p>Limit s/d **Rp 2.000.000**. Bunga **1% Flat**. Dana cair langsung ke Youthcard Anda.</p>
+            <div class="progress-bar-container">
+                <div class="progress-bar"><div style="width: 33%;"></div></div>
+                <div class="progress-text">Langkah 1 dari 3: Data Diri</div>
             </div>
 
-            <div class="input-group">
-                <label>Nominal Pinjaman</label>
-                <div class="input-nominal-container">
-                    <span>Rp</span>
-                    <input type="number" class="input-nominal" value="1500000" min="500000" max="2000000" placeholder="500.000 - 2.000.000">
-                </div>
-            </div>
-            
-            <div class="input-group">
-                <label>Pilih Jangka Waktu (Tenor)</label>
-                <div class="tenor-selection">
-                    <div class="tenor-option"><span>1</span> Bulan</div>
-                    <div class="tenor-option active"><span>3</span> Bulan</div>
-                    <div class="tenor-option"><span>6</span> Bulan</div>
-                </div>
-            </div>
+            <form>
+                <div class="form-section">
+                    <h3>Data Pribadi Mahasiswa</h3>
+                    
+                    <div class="input-group">
+                        <label for="nama_lengkap">Nama Lengkap (Sesuai KTP)</label>
+                        <input type="text" id="nama_lengkap" placeholder="Contoh: Hartanta Dwi Putra" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="nik">Nomor Induk Kependudukan (NIK)</label>
+                        <input type="text" id="nik" maxlength="16" placeholder="Masukkan 16 digit NIK" required>
+                    </div>
 
-            <div class="simulasi-box">
-                <h3 style="font-size: 1em; color: var(--text-dark); margin-bottom: var(--spacing-s);">Simulasi Pembayaran</h3>
-
-                <div class="input-group" style="margin-top: var(--spacing-m);">
-                    <label style="margin-top: 0;">Frekuensi Pembayaran</label>
-                    <div class="tenor-type-selection">
-                        <div class="tenor-type-option">Bulanan</div>
-                        <div class="tenor-type-option active">Mingguan</div>
-                        <div class="tenor-type-option">Harian</div>
+                    <div class="input-group">
+                        <label for="alamat">Alamat Tinggal Saat Ini (Box 3)</label>
+                        <input type="text" id="alamat" placeholder="Jalan, Nomor Rumah, Kota" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="kontak">Nomor Kontak Aktif (Box 3)</label>
+                        <input type="tel" id="kontak" placeholder="Contoh: 0812xxxxxx" required>
                     </div>
                 </div>
 
-                <div class="simulasi-row">
-                    <span>Pokok Pinjaman</span>
-                    <span>Rp 1.500.000</span>
-                </div>
-                <div class="simulasi-row">
-                    <span>Biaya & Bunga Total (1% x 3 Bln)</span>
-                    <span>Rp 45.000</span>
-                </div>
-                <div class="simulasi-row total">
-                    <span>Total Pembayaran</span>
-                    <span>Rp 1.545.000</span>
-                </div>
-                <div class="simulasi-row total" style="margin-top: var(--spacing-s);">
-                    <span>Cicilan Mingguan Estimasi</span>
-                    <span style="color: #008000;">Rp 118.846</span>
-                </div>
-                <p style="font-size: 0.7em; color: gray; margin-top: var(--spacing-xs); text-align: center;">*Angka dapat berubah sedikit saat pencairan dana.</p>
-            </div>
+                <div class="form-section">
+                    <h3>Data Akademik</h3>
+                    
+                    <div class="input-group">
+                        <label for="kampus">Perguruan Tinggi</label>
+                        <select id="kampus" required>
+                            <option value="">-- Pilih Kampus --</option>
+                            <option value="usu">Universitas Sumatera Utara (USU)</option>
+                            <option value="unimed">Universitas Negeri Medan (Unimed)</option>
+                            <option value="umsu">Universitas Muhammadiyah Sumatera Utara (UMSU)</option>
+                            </select>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="nim">Nomor Induk Mahasiswa (NIM)</label>
+                        <input type="text" id="nim" placeholder="Masukkan NIM Anda" required>
+                    </div>
 
-            <button class="btn-submit">Ajukan Youth-Loan Sekarang</button>
+                    <div class="input-group">
+                        <label for="fakultas">Fakultas / Program Studi</label>
+                        <input type="text" id="fakultas" placeholder="Contoh: Ilmu Komputer" required>
+                    </div>
+                </div>
+
+                <div class="form-section" style="border-bottom: none;">
+                    <h3>Informasi Tambahan</h3>
+                    
+                    <div class="input-group">
+                        <label for="nama_ortu">Nama Orang Tua / Wali (Box 3)</label>
+                        <input type="text" id="nama_ortu" placeholder="Nama Lengkap Orang Tua" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="fasilitas">Fasilitas Youthcard yang Diminati (Box 3)</label>
+                        <select id="fasilitas" required>
+                            <option value="ktm_atm">KTM + ATM (Wajib)</option>
+                            <option value="pinjaman_mikro">Pinjaman Mikro Pendidikan (Youth-Loan)</option>
+                            <option value="akses_poin">Akses Poin Ganda</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <button type="submit" class="btn-submit">Lanjutkan ke Verifikasi (Langkah 2)</button>
+            </form>
         </div>
     </div>
 </body>
