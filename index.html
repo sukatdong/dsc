@@ -3,103 +3,478 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrasi - Formulir Cuti Kuliah</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css"> 
+    <title>Mandiri Youthcard - Replikasi Livin'</title>
+    <style>
+        /* === TEMA & FONT === */
+        :root {
+            --livin-blue-primary: #52B2FA; /* Warna biru utama Livin' */
+            --livin-blue-dark: #004C99;   /* Biru gelap Mandiri */
+            --livin-yellow: #FFCC00;
+            --text-dark: #222;
+            --text-secondary: #777;
+            --spacing-xs: 8px;
+            --spacing-s: 12px;
+            --spacing-m: 16px;
+            --spacing-l: 24px;
+            --border-radius-m: 10px;
+            --border-radius-l: 15px;
+        }
+
+        /* === RESET DAN KONTAINER UTAMA === */
+        body {
+            font-family: 'Poppins', sans-serif; /* Menggunakan Poppins untuk nuansa modern */
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* Latar belakang abu-abu sangat muda */
+        }
+        .app-container {
+            max-width: 450px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background-color: var(--livin-blue-primary); /* Latar belakang aplikasi sesuai Livin' */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* === A. HEADER (Top Bar & User Info) === */
+        .top-bar-gradient {
+            background: linear-gradient(180deg, rgba(82,178,250,1) 0%, rgba(138,206,255,1) 100%); /* Gradien biru Livin' */
+            padding: var(--spacing-s) var(--spacing-m);
+            padding-bottom: 80px; /* Memberi ruang untuk area rekening di bawah */
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75em;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: var(--spacing-s);
+        }
+        .user-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--livin-blue-dark); /* Teks di header menjadi biru gelap */
+        }
+        .profile {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+        .profile-initial {
+            background-color: var(--livin-yellow);
+            color: var(--livin-blue-dark);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-size: 1.1em;
+            margin-right: var(--spacing-s);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .user-actions span {
+            font-size: 1.5em;
+            margin-left: var(--spacing-m);
+            color: var(--livin-blue-dark);
+        }
+        .livin-poin-link {
+            font-size: 0.7em;
+            color: var(--livin-blue-dark);
+            font-weight: 400;
+            display: block;
+            margin-top: 2px;
+        }
+
+        /* === B. REKENING AREA & TABS === */
+        .rek-container {
+            flex-grow: 1; /* Agar kontainer putih mengisi sisa ruang */
+            margin-top: -60px; /* Menaikkan container putih ke atas biru header */
+            background-color: white;
+            border-top-left-radius: var(--border-radius-l);
+            border-top-right-radius: var(--border-radius-l);
+            padding: var(--spacing-l) var(--spacing-m) var(--spacing-m);
+            position: relative;
+            z-index: 10;
+        }
+        .rek-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-m);
+        }
+        .rek-header h3 {
+            font-size: 1.1em;
+            margin: 0;
+            color: var(--text-dark);
+        }
+        .rek-header .right-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-s);
+            font-size: 0.85em;
+            color: var(--livin-blue-dark);
+            font-weight: 600;
+        }
+        .rek-header .right-actions span {
+            margin-left: var(--spacing-xs);
+        }
+
+        /* Tabs Rekening */
+        .rek-tabs-bar {
+            display: flex;
+            margin-bottom: var(--spacing-m);
+            overflow-x: auto; /* Mengaktifkan scroll horizontal */
+            -webkit-overflow-scrolling: touch; /* Untuk iOS */
+            scrollbar-width: none; /* Menyembunyikan scrollbar Firefox */
+        }
+        .rek-tabs-bar::-webkit-scrollbar {
+            display: none; /* Menyembunyikan scrollbar Chrome/Safari */
+        }
+        .tab-item {
+            flex-shrink: 0; /* Mencegah item mengecil */
+            text-align: center;
+            color: var(--text-secondary);
+            padding: 0 var(--spacing-s) var(--spacing-xs);
+            position: relative;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+        .tab-item.active {
+            color: var(--livin-blue-dark);
+            font-weight: 600;
+        }
+        .tab-item.active::after {
+            content: '';
+            display: block;
+            width: 80%;
+            height: 3px;
+            background-color: var(--livin-yellow); /* Garis kuning untuk tab aktif */
+            position: absolute;
+            bottom: 0;
+            left: 10%;
+            border-radius: 2px;
+        }
+        
+        /* Rekening Card */
+        .rek-card {
+            background-color: #f7f7f7;
+            border-radius: var(--border-radius-m);
+            padding: var(--spacing-m);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            margin-bottom: var(--spacing-m);
+        }
+        .rek-details strong {
+            display: block;
+            font-size: 1.1em;
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-dark);
+        }
+        .rek-details small {
+            color: var(--text-secondary);
+        }
+        .youth-loan-status {
+            font-size: 0.8em;
+            color: #008000;
+            font-weight: 600;
+            display: block;
+            margin-top: var(--spacing-xs);
+        }
+        .rek-card-image {
+            background-color: var(--livin-yellow); /* Kartu Youthcard kuning */
+            width: 60px;
+            height: 40px;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 40px;
+            color: var(--livin-blue-dark);
+            font-size: 0.7em;
+            font-weight: bold;
+        }
+        .add-product-link {
+            text-align: center; 
+            font-size: 0.8em; 
+        }
+        .add-product-link a {
+            color: var(--livin-blue-dark);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-xs);
+        }
+
+        /* === C. TRANSAKSI FAVORIT AREA === */
+        .transaksi-area {
+            padding: var(--spacing-m);
+        }
+        .transaksi-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-m);
+        }
+        .transaksi-header h3 {
+            margin: 0;
+            font-size: 1.1em;
+            color: var(--text-dark);
+        }
+        .transaksi-header a {
+            font-size: 0.8em;
+            color: var(--livin-blue-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        .transaksi-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); /* 5 kolom per baris */
+            gap: var(--spacing-m) var(--spacing-xs); /* Jarak antar ikon */
+            text-align: center;
+        }
+        .grid-item {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.7em;
+            font-weight: 500;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .grid-icon-circle {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #e6f0ff; /* Latar belakang ikon biru sangat muda */
+            line-height: 45px;
+            margin: 0 auto var(--spacing-xs);
+            font-size: 1.4em;
+            color: var(--livin-blue-dark);
+            position: relative;
+        }
+        .new-tag {
+            background-color: #00cc00; /* Hijau untuk NEW */
+            color: white;
+            padding: 2px 4px;
+            border-radius: 5px;
+            font-size: 0.6em;
+            font-weight: 600;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+        .promo-banner {
+            background-color: #e0f2fe; /* Latar biru muda untuk banner promo */
+            color: var(--livin-blue-dark);
+            padding: var(--spacing-s);
+            border-radius: var(--border-radius-m);
+            text-align: center;
+            margin-top: var(--spacing-l);
+            font-size: 0.8em;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid #cceeff;
+        }
+        .promo-banner span.icon {
+            font-size: 1.2em;
+        }
+
+        /* === D. FOOTER NAV BAR === */
+        .nav-bar {
+            display: flex;
+            justify-content: space-around;
+            padding: var(--spacing-xs) 0;
+            border-top: 1px solid #eee;
+            position: sticky; /* Sticky agar tetap di bawah saat scrolling */
+            bottom: 0;
+            width: 100%;
+            max-width: 450px;
+            background-color: white;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 100;
+            margin-top: auto; /* Mendorong nav bar ke bawah */
+        }
+        .nav-item {
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.7em;
+            padding: 5px 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-item.active {
+            color: var(--livin-blue-dark);
+            font-weight: 600;
+        }
+        .nav-icon {
+            font-size: 1.4em;
+            display: block;
+            margin-bottom: 2px;
+        }
+        .nav-qris {
+            background-color: var(--livin-yellow);
+            color: var(--livin-blue-dark);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            line-height: 50px;
+            margin-top: -15px; /* Menaikkan tombol QRIS */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-
-    <nav class="navbar navbar-top bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand text-white ms-3" href="#"><i class="fa-solid fa-bars me-3"></i> Portal Mahasiswa</a>
+    <div class="app-container">
+        <div class="top-bar-gradient">
+            <div class="status-bar">
+                <span>21:49 | 0.2KB/s &#x21BB;</span>
+                <span>&#x1F4F6; &#x1F5F0; &#x1F4F9; 59</span>
+            </div>
+            <div class="user-info">
+                <div class="profile">
+                    <span class="profile-initial">HD</span>
+                    <div>
+                        <span>HARTANTA DWI PUT...</span>
+                        <a href="#" class="livin-poin-link">O livin'poin ></a>
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <span>&#x1F4E7;</span> <span>&#x2699;</span> </div>
+            </div>
         </div>
-    </nav>
 
-    <div class="container-fluid content-container p-4">
-
-        <h2 class="main-title mb-1">Pengajuan Cuti Kuliah</h2>
-        <p class="subtitle text-muted mb-4">Ajukan permohonan cuti akademik Anda untuk semester berikutnya.</p>
-
-        <div class="alert alert-info-custom mb-4" role="alert">
-            <i class="fa-solid fa-circle-info me-2"></i> **Perhatian:** Cuti kuliah harus diajukan sebelum batas waktu pendaftaran semester. Pastikan Anda sudah melunasi tunggakan jika ada.
-        </div>
-
-        <div class="card card-form shadow-sm p-5 mb-4">
+        <div class="rek-container">
+            <div class="rek-header">
+                <h3>Rekening</h3>
+                <div class="right-actions">
+                    <span>Saldo</span> &#x1F4B0; <span>Atur</span> &#x2699; </div>
+            </div>
             
-            <form>
-                <h4 class="section-header mb-4"><i class="fa-solid fa-calendar-alt me-2"></i> Informasi Cuti</h4>
+            <div class="rek-tabs-bar">
+                <span class="tab-item active">Tabungan</span>
+                <span class="tab-item">Deposito</span>
+                <span class="tab-item">Kartu Kredit</span>
+                <span class="tab-item">Pinjaman</span>
+                <span class="tab-item">Investasi</span>
+            </div>
+            
+            <div class="rek-card">
+                <div class="rek-details">
+                    <strong>Tabungan Youthcard IDR</strong>
+                    <small>Rp *****</small>
+                    <p class="youth-loan-status" style="margin-top: 5px;">Cicilan Youth-Loan: Rp 375.000/bln</p>
+                </div>
+                <div class="rek-card-image">
+                    YCARD
+                </div>
+            </div>
+            <div class="add-product-link">
+                <a href="#">Produk Tabungan Lain &#x2795;</a>
+            </div>
+
+            <div class="transaksi-area">
+                <div class="transaksi-header">
+                    <h3>Transaksi Favorit</h3>
+                    <a href="#">Atur &#x2699;</a>
+                </div>
+
+                <div class="transaksi-grid">
+                    <a href="#" class="grid-item">
+                        <div class="grid-icon-circle">&#x27A1;</div>
+                        <span>Transfer Rupiah</span>
+                    </a>
+                    <a href="#" class="grid-item">
+                        <div class="grid-icon-circle">&#x1F4C3;</div>
+                        <span>Bayar/VA</span>
+                    </a>
+                    <a href="#" class="grid-item">
+                        <div class="grid-icon-circle">&#x2B06;</div>
+                        <span>Top-up</span>
+                    </a>
+                    <a href="#" class="grid-item">
+                        <div class="grid-icon-circle">&#x1F4B0;</div>
+                        <span>e-money</span>
+                    </a>
+                    <a href="#" class="grid-item">
+                        <div class="grid-icon-circle">&#x1F4B3;</div>
+                        <span>Setor Tarik</span>
+                    </a>
+
+                    <a href="#" class="grid-item">
+                        <div class="grid-icon-circle" style="color: #cc0000;">&#x1F4B1;</div>
+                        <span>Transfer Valas</span>
+                    </a>
+                    <a href="#" class="grid-item">
+                        <div class="grid-icon-circle" style="color: #008000;">
+                            <span class="new-tag">NEW</span>
+                            &#x1F4C8;
+                        </div>
+                        <span>Investasi</span>
+                    </a>
+                    <a href="#" class="grid-item">
+                        <div class="grid-icon-circle">&#x1F58A;</div>
+                        <span>QRIS Terima Transfer</span>
+                    </a>
+                    <a href="#" class="grid-item">
+                        <div class="grid-icon-circle">&#x1F4F1;</div>
+                        <span>Tap to Pay</span>
+                    </a>
+                    <a href="#" class="grid-item">
+                        <div class="grid-icon-circle">&#x2014;</div>
+                        <span>Lihat Semua</span>
+                    </a>
+                </div>
                 
-                <div class="row mb-4">
-                    <div class="col-md-6 mb-3 mb-md-0">
-                        <label for="semester_cuti" class="form-label-custom">Semester Cuti yang Diajukan</label>
-                        <select class="form-select" id="semester_cuti" required>
-                            <option selected disabled value="">Pilih Semester...</option>
-                            <option value="ganjil_2026">Ganjil 2026/2027</option>
-                            <option value="genap_2026">Genap 2026/2027</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="lama_cuti" class="form-label-custom">Lama Cuti</label>
-                        <input type="text" class="form-control" id="lama_cuti" value="1 Semester" readonly>
-                    </div>
+                <div class="promo-banner">
+                    <span class="icon">&#x1F4F1;</span>
+                    <span>Baru! Belanja di mana saja tinggal tap HP</span>
                 </div>
-
-                <div class="mb-5">
-                    <label for="alasan_cuti" class="form-label-custom">Alasan Pengajuan Cuti Kuliah</label>
-                    <textarea class="form-control" id="alasan_cuti" rows="4" placeholder="Jelaskan secara rinci alasan Anda mengajukan cuti (misalnya: masalah kesehatan, masalah finansial, pekerjaan, dll.)" required></textarea>
-                </div>
-
-                <h4 class="section-header mb-4"><i class="fa-solid fa-file-upload me-2"></i> Dokumen Persyaratan</h4>
-                
-                <div class="table-responsive mb-4">
-                    <table class="table table-bordered table-upload">
-                        <thead>
-                            <tr class="table-light">
-                                <th>#</th>
-                                <th>Jenis Dokumen Wajib</th>
-                                <th>Status</th>
-                                <th>Unggah File (Max 1MB, PDF)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Surat Permohonan Cuti (ditandatangani orang tua/wali)</td>
-                                <td><span class="badge bg-danger">Belum Ada</span></td>
-                                <td><input class="form-control form-control-sm" type="file" accept=".pdf"></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Transkrip Nilai (Lengkap)</td>
-                                <td><span class="badge bg-success">Terunggah</span></td>
-                                <td><button type="button" class="btn btn-sm btn-outline-success"><i class="fa-solid fa-check"></i> Sudah</button></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Bukti Lunas UKT Semester Terakhir</td>
-                                <td><span class="badge bg-success">Terunggah</span></td>
-                                <td><button type="button" class="btn btn-sm btn-outline-success"><i class="fa-solid fa-check"></i> Sudah</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-submit">
-                        <i class="fa-solid fa-pause-circle me-2"></i> Ajukan Cuti Kuliah
-                    </button>
-                </div>
-            </form>
-
+            </div>
         </div>
 
-        <div class="footer-info mt-5 pt-4 text-secondary small">
-            Pusat Kajian Teknologi Informasi UPN 'VETERAN' Yogyakarta.
+        <div class="nav-bar">
+            <a href="#" class="nav-item active">
+                <span class="nav-icon">&#x1F3E0;</span>
+                <span>Beranda</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span class="nav-icon">&#x1F4C1;</span>
+                <span>Produk Anda</span>
+            </a>
+            <div class="nav-item">
+                <div class="nav-qris">&#x1F4F1;</div>
+                <span>QRIS</span>
+            </div>
+            <a href="#" class="nav-item">
+                <span class="nav-icon">&#x1F3F7;</span>
+                <span>Sukha</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span class="nav-icon">&#x1F4B0;</span>
+                <span>Loyalty</span>
+            </a>
         </div>
-
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
