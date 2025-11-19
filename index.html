@@ -3,277 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mandiri Youthcard - Bayar UKT</title>
+    <title>Desain Kartu Mandiri Youthcard - Luxury</title>
     <style>
-        /* === TEMA & FONT === */
         :root {
-            --mandiri-blue-dark: #004C99; 
-            --mandiri-blue-light: #79c5ff; 
-            --mandiri-yellow: #FFCC00;
-            --text-dark: #222;
-            --text-secondary: #777;
-            --spacing-xs: 8px;
-            --spacing-s: 12px;
-            --spacing-m: 16px;
-            --spacing-l: 24px;
-            --border-radius-m: 10px;
+            --mandiri-blue-deep: #0D1B37; /* Biru Malam/Deep Navy */
+            --mandiri-blue-accent: #1C335E;
+            --mandiri-gold: #FFD700; /* Emas */
+            --text-light: #ffffff;
+            --spacing-m: 20px;
         }
 
-        /* === RESET DAN KONTAINER UTAMA === */
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #f8f8f8;
-        }
-        .app-container {
-            max-width: 450px;
-            margin: 0 auto;
-            min-height: 100vh;
-            background-color: white;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+            padding: 50px;
+            background-color: #f0f0f0;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
         }
 
-        /* === HEADER / APP BAR === */
-        .header {
-            background-color: white;
-            color: var(--text-dark);
+        /* === Kontainer Kartu === */
+        .youthcard-container {
+            width: 400px;
+            height: 250px;
+            /* Gradient Kompleks untuk Kedalaman */
+            background: radial-gradient(circle at 100% 100%, var(--mandiri-blue-accent) 0%, var(--mandiri-blue-deep) 70%); 
+            border-radius: 18px;
+            color: var(--text-light);
             padding: var(--spacing-m);
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #eee; 
-            position: sticky;
-            top: 0;
-            z-index: 50;
-        }
-        .header h1 {
-            font-size: 1.1em;
-            margin: 0;
-            flex-grow: 1;
-            text-align: center;
-            font-weight: 600;
-            color: var(--mandiri-blue-dark);
-        }
-        .header .icon {
-            font-size: 1.5em;
-            cursor: pointer;
-            color: var(--mandiri-blue-dark);
-        }
-
-        /* === CONTENT UTAMA === */
-        .content {
-            padding: var(--spacing-l) var(--spacing-m);
-            flex-grow: 1;
-        }
-
-        /* === FORM INPUT STYLING === */
-        .input-group {
-            margin-bottom: var(--spacing-l);
-        }
-        .input-group label {
-            display: block;
-            font-size: 0.85em;
-            color: var(--text-dark);
-            font-weight: 600;
-            margin-bottom: var(--spacing-xs);
-        }
-        .input-field-container {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6); /* Shadow dalam */
             position: relative;
+            overflow: hidden; /* Menyembunyikan overflow tekstur */
         }
-        .input-field-container input, .input-field-container select {
-            width: 100%;
-            padding: var(--spacing-s) var(--spacing-m);
-            box-sizing: border-box;
-            border: 1px solid #ddd;
-            border-radius: var(--border-radius-m);
-            font-size: 0.9em;
-            transition: border-color 0.2s;
-        }
-        .input-field-container input:focus, .input-field-container select:focus {
-            border-color: var(--mandiri-blue-light);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(121, 197, 255, 0.3);
-        }
-
-        /* --- Input dengan Icon --- */
-        .input-icon {
+        
+        /* === EFEK TEKSTUR MEWAH (Pseudo-element) === */
+        .youthcard-container::before {
+            content: '';
             position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--mandiri-blue-dark);
-            font-size: 1.2em;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* Pola Geometris Sangat Halus */
+            background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, 0.05) 1px, transparent 1px, transparent 50%);
+            background-size: 5px 5px;
+            opacity: 0.8;
+            mix-blend-mode: soft-light;
         }
 
-        /* === TOMBOL CEK TAGIHAN === */
-        .btn-cek {
-            display: block;
-            width: 100%;
-            padding: var(--spacing-m);
-            background-color: var(--mandiri-blue-dark);
-            color: white;
-            border: none;
-            border-radius: var(--border-radius-m);
-            font-size: 1em;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            transition: background-color 0.2s;
-        }
-        .btn-cek:hover {
-            background-color: #003a7a;
-        }
-        .btn-cek:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-            box-shadow: none;
-        }
-
-        /* === DETAIL TAGIHAN CARD (Simulasi Hasil Cek) === */
-        .tagihan-card {
-            margin-top: var(--spacing-l);
-            padding: var(--spacing-m);
-            background-color: #e6f0ff; /* Biru muda */
-            border-radius: var(--border-radius-m);
-            border: 1px solid #d3e5ff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        }
-        .tagihan-header {
+        /* === Logo dan Identitas === */
+        .top-info {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: var(--spacing-s);
-            border-bottom: 1px solid #cceeff;
-            padding-bottom: var(--spacing-xs);
+            margin-bottom: 10px;
+            position: relative; /* Agar di atas tekstur */
+            z-index: 2;
         }
-        .tagihan-header h3 {
-            color: var(--mandiri-blue-dark);
-            font-size: 1em;
-            margin: 0;
+        .logo-section {
+             display: flex;
+             align-items: center;
         }
-        .tagihan-row {
+        .logo-mandiri {
+            font-size: 1.5em;
+            font-weight: 900;
+            color: var(--mandiri-gold); /* Logo Emas */
+            letter-spacing: -0.5px;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); /* Efek cahaya emas */
+            margin-right: 5px;
+        }
+        .logo-kampus {
+            font-size: 0.8em;
+            font-weight: 300;
+            opacity: 0.8;
+        }
+        .chip-section {
             display: flex;
-            justify-content: space-between;
-            padding: 5px 0;
-            font-size: 0.9em;
-            color: var(--text-dark);
+            align-items: center;
+            justify-content: flex-end;
         }
-        .tagihan-row.total {
+        .chip {
+            width: 45px;
+            height: 35px;
+            background: linear-gradient(135deg, #ffd700, #c0a000); /* Chip Emas */
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        .type-badge {
+            font-size: 0.7em;
+            background-color: var(--mandiri-gold);
+            color: var(--mandiri-blue-deep);
+            padding: 3px 10px;
+            border-radius: 15px;
             font-weight: bold;
-            font-size: 1.1em;
-            color: #cc0000; /* Merah untuk jumlah tagihan */
-            border-top: 1px dashed #cceeff;
-            margin-top: var(--spacing-s);
-            padding-top: var(--spacing-s);
-        }
-        .tagihan-status {
-            font-size: 0.8em;
-            color: #008000; /* Hijau untuk status "Aktif/Ada Tagihan" */
-            font-weight: 600;
-        }
-        .point-info {
-            background-color: var(--mandiri-yellow);
-            color: var(--mandiri-blue-dark);
-            padding: 5px 10px;
-            border-radius: var(--border-radius-m);
-            font-size: 0.8em;
-            font-weight: 600;
-            text-align: center;
-            margin-top: var(--spacing-s);
+            margin-left: 10px;
         }
 
-        /* === FOOTER BUTTON === */
-        .footer-button {
-            padding: var(--spacing-m);
-            border-top: 1px solid #eee;
-            background-color: white;
-            position: sticky;
-            bottom: 0;
+        /* === Nomor dan Data KTM === */
+        .card-data-area {
+            margin-top: 15px;
+            position: relative;
+            z-index: 2;
         }
-        .btn-bayar {
-            display: block;
-            width: 100%;
-            padding: var(--spacing-m);
-            background-color: var(--mandiri-yellow);
-            color: var(--mandiri-blue-dark);
-            border: none;
-            border-radius: 50px;
-            font-size: 1em;
+        .card-number {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.6em;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            opacity: 0.95;
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .ktm-info {
+            font-size: 0.9em;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            opacity: 0.9;
+        }
+        .ktm-label {
+            font-weight: 300;
+            opacity: 0.7;
+            font-size: 0.7em;
+        }
+
+        /* === Nama Pemilik dan Tipe Kartu === */
+        .card-holder-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            font-size: 0.9em;
+            position: relative;
+            z-index: 2;
+        }
+        .card-holder-name {
             font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            text-transform: uppercase;
+            font-size: 1.1em;
+            letter-spacing: 0.5px;
         }
+        .valid-thru {
+            font-size: 0.8em;
+            text-align: right;
+        }
+        .card-brand {
+            font-size: 1.8em;
+            font-weight: 900;
+            color: var(--mandiri-gold);
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.6); 
+        }
+
     </style>
 </head>
 <body>
-    <div class="app-container">
-        <div class="header">
-            <span class="icon">&#x2190;</span> 
-            <h1>Bayar UKT & Biaya Studi</h1>
-            <span class="icon">&#x1F4BE;</span> 
+    <div class="youthcard-container">
+        <div class="top-info">
+            <div class="logo-section">
+                <span class="logo-mandiri">MANDIRI</span>
+                <span class="logo-kampus">| Youthcard</span>
+            </div>
+            <div class="chip-section">
+                 <div class="type-badge">KTM DEBIT</div>
+            </div>
         </div>
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+             <div class="chip"></div>
+             <div class="card-brand">VISA</div> </div>
 
-        <div class="content">
-            <div class="input-group">
-                <label for="kampus_id">Penyedia Jasa (Perguruan Tinggi)</label>
-                <div class="input-field-container">
-                    <select id="kampus_id" required>
-                        <option value="">-- Cari atau Pilih Kampus Mitra --</option>
-                        <option value="usu">Universitas Sumatera Utara (USU)</option>
-                        <option value="unimed">Universitas Negeri Medan (Unimed)</option>
-                        <option value="umsu">Universitas Muhammadiyah Sumatera Utara (UMSU)</option>
-                    </select>
-                </div>
+        <div class="card-data-area">
+            <div class="card-number">
+                4567 12** **** 5678
             </div>
-            
-            <div class="input-group">
-                <label for="nim_va">Nomor Pembayaran (NIM / Virtual Account)</label>
-                <div class="input-field-container">
-                    <input type="text" id="nim_va" placeholder="Masukkan NIM atau Kode VA" required>
-                    <span class="input-icon">&#x1F4C3;</span> </div>
+        </div>
+        
+        <div class="ktm-info">
+            <div>
+                <div class="ktm-label">NIM (Nomor Induk Mahasiswa)</div>
+                <div>211402001</div>
             </div>
-
-            <button class="btn-cek">Cek Tagihan</button>
-
-            <div class="tagihan-card" style="display: block;"> 
-                <div class="tagihan-header">
-                    <h3>Detail Tagihan Aktif</h3>
-                    <span class="tagihan-status">&#x2705; Aktif</span>
-                </div>
-                
-                <div class="tagihan-row">
-                    <span>Nama Pelanggan</span>
-                    <span>HARTANTA DWI PUTRA</span>
-                </div>
-                <div class="tagihan-row">
-                    <span>Perguruan Tinggi</span>
-                    <span>Univ. Sumatera Utara (USU)</span>
-                </div>
-                <div class="tagihan-row">
-                    <span>NIM/VA</span>
-                    <span>20191200XX</span>
-                </div>
-                <div class="tagihan-row">
-                    <span>Keterangan</span>
-                    <span>UKT Semester Ganjil 2025/2026</span>
-                </div>
-
-                <div class="tagihan-row total">
-                    <span>Jumlah Tagihan (Wajib Dibayar)</span>
-                    <span>Rp 4.500.000</span>
-                </div>
-
-                <div class="point-info">
-                    &#x2B50; Bayar Sekarang & Dapatkan **900 Livin'Poin**!
-                </div>
+             <div>
+                <div class="ktm-label">Kampus Mitra</div>
+                <div>UNIV. SUMUT (USU)</div>
             </div>
         </div>
 
-        <div class="footer-button">
-            <button class="btn-bayar">Bayar Tagihan Rp 4.500.000</button>
+
+        <div class="card-holder-area">
+            <div>
+                <div class="card-holder-name">HARTANTA DWI PUTRA</div>
+            </div>
+            <div class="valid-thru">
+                <div style="font-size: 0.7em; opacity: 0.7;">VALID THRU</div>
+                <div style="font-weight: 500;">09 / 28</div>
+            </div>
         </div>
+        
     </div>
 </body>
 </html>
