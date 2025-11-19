@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>History Pembayaran UKT</title>
+    <title>Mandiri Edupay Hub</title>
     <style>
         /* === TEMA & FONT === */
         :root {
             --mandiri-blue-dark: #004C99; 
-            --mandiri-blue-light: #79c5ff; 
             --mandiri-yellow: #FFCC00;
             --text-dark: #222;
             --text-secondary: #777;
@@ -67,205 +66,140 @@
             flex-grow: 1;
         }
 
-        /* === RINGKASAN AKADEMIK (WIDGET) === */
-        .academic-summary-card {
-            background-color: #e6f0ff;
-            border: 1px solid #d3e5ff;
-            padding: var(--spacing-l);
-            border-radius: var(--border-radius-m);
-            margin-bottom: var(--spacing-l);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-        .academic-summary-card h2 {
-            font-size: 1.1em;
-            margin-top: 0;
-            color: var(--mandiri-blue-dark);
-            border-bottom: 2px solid var(--mandiri-yellow);
-            padding-bottom: var(--spacing-xs);
-            display: inline-block;
-        }
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.9em;
-            margin-top: var(--spacing-s);
-            color: var(--text-dark);
-        }
-        .summary-row strong {
-            color: #008000; /* Hijau untuk status baik */
-        }
-
-        /* === FILTER DAN SORTING === */
-        .filter-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: var(--spacing-m);
-        }
-        .filter-section select {
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: var(--border-radius-m);
-            font-size: 0.85em;
-        }
-        .filter-section label {
-            font-size: 0.9em;
-            color: var(--text-dark);
-            font-weight: 600;
-        }
-
-
-        /* === DAFTAR TRANSAKSI UKT === */
+        /* === SECTION STYLE === */
         .section-title {
-            font-size: 1em;
+            font-size: 1.2em;
             color: var(--text-dark);
-            font-weight: 600;
-            margin-bottom: var(--spacing-s);
+            font-weight: 700;
+            margin-bottom: var(--spacing-m);
+            border-left: 4px solid var(--mandiri-yellow);
+            padding-left: var(--spacing-s);
         }
-        .transaction-list {
-            list-style: none;
-            padding: 0;
-        }
-        .transaction-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: var(--spacing-s) 0;
-            border-bottom: 1px solid #eee;
-            margin-bottom: var(--spacing-xs);
-            background-color: white;
+
+        /* === CARD ITEM STYLE (Beasiswa & Kursus) === */
+        .academic-card {
+            background-color: #ffffff;
             border-radius: var(--border-radius-m);
-        }
-        .transaction-item:last-child {
-            border-bottom: none;
-        }
-        .trans-details {
+            padding: var(--spacing-m);
+            margin-bottom: var(--spacing-m);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
             display: flex;
-            align-items: center;
             gap: var(--spacing-m);
+            border: 1px solid #eee;
+            cursor: pointer;
+            transition: transform 0.2s;
         }
-        .trans-icon-circle {
-            width: 40px;
-            height: 40px;
+        .academic-card:hover {
+             transform: translateY(-2px);
+             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .card-icon {
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            background-color: var(--mandiri-yellow); /* Ikon Pembayaran UKT */
-            line-height: 40px;
+            background-color: var(--mandiri-blue-dark);
             text-align: center;
-            font-size: 1.4em;
+            line-height: 50px;
+            font-size: 1.8em;
+            color: white;
+            flex-shrink: 0;
+        }
+        .card-details h4 {
+            margin: 0 0 var(--spacing-xs) 0;
+            font-size: 1em;
             color: var(--mandiri-blue-dark);
         }
-        .trans-description p {
+        .card-details p {
             margin: 0;
-            font-size: 0.9em;
-            color: var(--text-dark);
-            font-weight: 600;
-        }
-        .trans-description small {
-            font-size: 0.8em;
+            font-size: 0.85em;
             color: var(--text-secondary);
         }
-        .trans-amount-area {
-            text-align: right;
-        }
-        .trans-amount {
-            font-size: 0.9em;
-            font-weight: 700;
-            color: var(--mandiri-blue-dark); 
-        }
-        .status-badge {
-            font-size: 0.7em;
+        .benefit-tag {
+            background-color: var(--mandiri-yellow);
+            color: var(--mandiri-blue-dark);
             padding: 3px 8px;
-            border-radius: var(--border-radius-m);
+            border-radius: 15px;
+            font-size: 0.7em;
             font-weight: bold;
-            margin-top: var(--spacing-xs);
-        }
-        .status-lunas {
-            background-color: #e6ffe6;
-            color: #008000;
-        }
-        .status-tertunda {
-            background-color: #fff0e6;
-            color: #ff9900;
+            margin-top: var(--spacing-s);
+            display: inline-block;
         }
 
+        /* === Divider Tambahan === */
+        .divider {
+            height: 2px;
+            background-color: #e0e0e0;
+            margin: var(--spacing-l) 0;
+        }
     </style>
 </head>
 <body>
     <div class="app-container">
         <div class="header">
             <span class="icon">&#x2190;</span> 
-            <h1>Riwayat Pembayaran UKT</h1>
-            <span class="icon">&#x1F4BE;</span> 
+            <h1>Edupay Hub</h1>
+            <span class="icon">&#x2699;</span> 
         </div>
 
         <div class="content">
-            <div class="academic-summary-card">
-                <h2>Ringkasan Pembayaran</h2>
-                <div class="summary-row">
-                    <span>Perguruan Tinggi</span>
-                    <strong>Univ. Sumatera Utara (USU)</strong>
+            <div class="section-beasiswa">
+                <h2 class="section-title">Beasiswa & Bantuan Dana</h2>
+                
+                <div class="academic-card">
+                    <div class="card-icon" style="background-color: #008000;">&#x1F4B8;</div>
+                    <div class="card-details">
+                        <h4>Mandiri Beasiswa Prestasi</h4>
+                        <p>Dukungan dana s/d Rp 6 Juta/semester untuk mahasiswa berprestasi.</p>
+                        <span class="benefit-tag" style="background-color: #e6ffe6; color: #008000;">Dibuka: Jan - Feb 2026</span>
+                    </div>
                 </div>
-                <div class="summary-row">
-                    <span>Total Semester Dibayar</span>
-                    <strong>5 Semester</strong>
-                </div>
-                <div class="summary-row">
-                    <span>Status Tagihan Berikutnya</span>
-                    <strong style="color: #cc0000;">Tertunda (Ganjil 2025)</strong>
+
+                <div class="academic-card">
+                    <div class="card-icon" style="background-color: #cc0000;">&#x1F3F5;</div>
+                    <div class="card-details">
+                        <h4>Beasiswa Cendekia Nusantara</h4>
+                        <p>Bantuan UKT dan biaya hidup dari mitra Yayasan. Khusus untuk kampus di Medan.</p>
+                        <span class="benefit-tag">Lihat Persyaratan & Daftar</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="filter-section">
-                <label>Tahun Akademik</label>
-                <select>
-                    <option>2025/2026</option>
-                    <option>2024/2025</option>
-                    <option>2023/2024</option>
-                </select>
-            </div>
+            <div class="divider"></div>
 
-            <h4 class="section-title">Riwayat Semester (Tahun 2024/2025)</h4>
-            <ul class="transaction-list">
-                <li class="transaction-item">
-                    <div class="trans-details">
-                        <span class="trans-icon-circle">&#x1F393;</span>
-                        <div class="trans-description">
-                            <p>Semester Ganjil 2025/2026</p>
-                            <small>Jatuh Tempo: 20 November 2025</small>
-                        </div>
+            <div class="section-kursus">
+                <h2 class="section-title">Kursus & Pelatihan Berkeuntungan</h2>
+
+                <div class="academic-card">
+                    <div class="card-icon">&#x1F4BB;</div>
+                    <div class="card-details">
+                        <h4>Sertifikasi Coding Bootcamp</h4>
+                        <p>Pelatihan Intensif Web Development. Diskon 10% untuk pemegang Youthcard.</p>
+                        <span class="benefit-tag">&#x2B50; Dapatkan 5x Livin'Poin!</span>
                     </div>
-                    <div class="trans-amount-area">
-                        <div class="trans-amount" style="color: #cc0000;">Rp 4.500.000</div>
-                        <span class="status-badge status-tertunda">BELUM LUNAS</span>
+                </div>
+
+                <div class="academic-card">
+                    <div class="card-icon" style="background-color: #ff9900;">&#x1F4AC;</div>
+                    <div class="card-details">
+                        <h4>Kursus Bahasa Inggris (IELTS/TOEFL)</h4>
+                        <p>Tingkatkan skor Anda. Bayar dengan cicilan Youth-Loan 3 bulan.</p>
+                        <span class="benefit-tag">&#x26A1; Tersedia Youth-Loan</span>
                     </div>
-                </li>
-                 <li class="transaction-item">
-                    <div class="trans-details">
-                        <span class="trans-icon-circle">&#x1F393;</span>
-                        <div class="trans-description">
-                            <p>Semester Genap 2024/2025</p>
-                            <small>Tanggal Pembayaran: 05 Maret 2025</small>
-                        </div>
+                </div>
+                
+                <div class="academic-card">
+                    <div class="card-icon" style="background-color: #33aaff;">&#x1F4CA;</div>
+                    <div class="card-details">
+                        <h4>Pelatihan Kepemimpinan & Bisnis</h4>
+                        <p>Modul soft skill untuk karier. Biaya terjangkau.</p>
+                        <span class="benefit-tag">&#x2B50; Dapatkan 2x Livin'Poin!</span>
                     </div>
-                    <div class="trans-amount-area">
-                        <div class="trans-amount" style="color: #008000;">Rp 4.500.000</div>
-                        <span class="status-badge status-lunas">LUNAS</span>
-                    </div>
-                </li>
-                 <li class="transaction-item">
-                    <div class="trans-details">
-                        <span class="trans-icon-circle">&#x1F393;</span>
-                        <div class="trans-description">
-                            <p>Semester Ganjil 2024/2025</p>
-                            <small>Tanggal Pembayaran: 10 September 2024</small>
-                        </div>
-                    </div>
-                    <div class="trans-amount-area">
-                        <div class="trans-amount" style="color: #008000;">Rp 4.500.000</div>
-                        <span class="status-badge status-lunas">LUNAS</span>
-                    </div>
-                </li>
-            </ul>
+                </div>
+            </div>
+            
+            <p style="text-align: center; font-size: 0.8em; color: var(--text-secondary); margin-top: var(--spacing-l);">
+                Kemitraan Edupay diperbarui setiap bulan.
+            </p>
         </div>
     </div>
 </body>
