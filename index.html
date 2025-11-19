@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrasi Instan - Scan KTM</title>
+    <title>History Livin' Paylater</title>
     <style>
         /* === TEMA & FONT === */
         :root {
@@ -12,6 +12,8 @@
             --mandiri-yellow: #FFCC00;
             --text-dark: #222;
             --text-secondary: #777;
+            --spacing-xs: 8px;
+            --spacing-s: 12px;
             --spacing-m: 16px;
             --spacing-l: 24px;
             --border-radius-m: 10px;
@@ -41,6 +43,9 @@
             display: flex;
             align-items: center;
             border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 50;
         }
         .header h1 {
             font-size: 1.1em;
@@ -60,78 +65,150 @@
         .content {
             padding: var(--spacing-l) var(--spacing-m);
             flex-grow: 1;
-            text-align: center;
         }
 
-        /* === SCAN AREA (Visual Kamera) === */
-        .scan-area {
-            width: 90%;
-            height: 250px;
-            margin: var(--spacing-l) auto;
-            border: 2px dashed var(--mandiri-blue-dark);
+        /* === RINGKASAN PAYLATER (WIDGET BESAR) === */
+        .summary-card {
+            background: linear-gradient(135deg, var(--mandiri-blue-dark), #003a7a);
+            color: white;
+            padding: var(--spacing-l);
             border-radius: var(--border-radius-m);
-            background-color: #f0f6ff; /* Background Biru Muda */
+            margin-bottom: var(--spacing-l);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             overflow: hidden;
         }
-        .scan-line {
+        .summary-card::after {
+            content: "PAYLATER";
             position: absolute;
-            top: 0;
+            bottom: -15px;
+            right: 10px;
+            font-size: 3em;
+            font-weight: 900;
+            opacity: 0.1;
+            color: var(--mandiri-yellow);
+        }
+        .summary-card h2 {
+            font-size: 1.2em;
+            margin-top: 0;
+            font-weight: 500;
+        }
+        .summary-card strong {
+            display: block;
+            font-size: 2em;
+            margin-bottom: var(--spacing-s);
+            color: var(--mandiri-yellow);
+        }
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9em;
+            margin-top: var(--spacing-s);
+            padding-top: var(--spacing-xs);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* === TAB NAVIGASI HISTORY === */
+        .history-tabs {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: var(--spacing-m);
+            border-bottom: 2px solid #eee;
+        }
+        .history-tab-item {
+            padding: var(--spacing-s) 0;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+        }
+        .history-tab-item.active {
+            color: var(--mandiri-blue-dark);
+        }
+        .history-tab-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
             left: 0;
             width: 100%;
             height: 3px;
-            background-color: #ff0000; /* Garis scan merah */
-            animation: scanning 2s infinite alternate ease-in-out;
-        }
-        @keyframes scanning {
-            0% { top: 0%; }
-            100% { top: 98%; }
-        }
-        .scan-icon {
-            font-size: 2em;
-            color: var(--mandiri-blue-dark);
-        }
-        .scan-area p {
-            margin-top: var(--spacing-s);
-            font-size: 0.9em;
-            color: var(--text-dark);
+            background-color: var(--mandiri-blue-dark);
         }
 
-        /* === INFO VERIFIKASI === */
-        .info-verifikasi {
-            background-color: var(--mandiri-yellow);
-            padding: var(--spacing-m);
-            border-radius: var(--border-radius-m);
-            margin-bottom: var(--spacing-l);
+        /* === DAFTAR TRANSAKSI/CICILAN === */
+        .transaction-list {
+            list-style: none;
+            padding: 0;
+        }
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-s) 0;
+            border-bottom: 1px solid #eee;
+        }
+        .transaction-item:last-child {
+            border-bottom: none;
+        }
+        .trans-details {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-m);
+        }
+        .trans-icon-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #e6f0ff;
+            line-height: 40px;
+            text-align: center;
+            font-size: 1.2em;
             color: var(--mandiri-blue-dark);
-            font-weight: 600;
+        }
+        .trans-description p {
+            margin: 0;
             font-size: 0.9em;
-            text-align: left;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            color: var(--text-dark);
+            font-weight: 500;
         }
-        .info-verifikasi span {
-            display: block;
-            margin-top: 5px;
-            font-weight: 400;
-            font-size: 0.85em;
+        .trans-description small {
+            font-size: 0.8em;
+            color: var(--text-secondary);
         }
-        
-        /* === TOMBOL UTAMA === */
+        .trans-amount {
+            font-size: 0.9em;
+            font-weight: 700;
+            color: #cc0000; /* Merah untuk pembayaran keluar */
+        }
+        .status-badge {
+            font-size: 0.7em;
+            padding: 3px 8px;
+            border-radius: var(--border-radius-m);
+            font-weight: bold;
+            margin-top: var(--spacing-xs);
+        }
+        .status-lunas {
+            background-color: #e6ffe6;
+            color: #008000;
+        }
+        .status-tertunda {
+            background-color: #fff0e6;
+            color: #ff9900;
+        }
+
+        /* === FOOTER ACTION === */
         .footer-button {
             padding: var(--spacing-m);
             border-top: 1px solid #eee;
             background-color: white;
         }
-        .btn-submit {
+        .btn-bayar {
             display: block;
             width: 100%;
             padding: var(--spacing-m);
-            background-color: var(--mandiri-blue-dark);
-            color: white;
+            background-color: var(--mandiri-yellow);
+            color: var(--mandiri-blue-dark);
             border: none;
             border-radius: 50px;
             font-size: 1em;
@@ -144,29 +221,78 @@
 <body>
     <div class="app-container">
         <div class="header">
-            <span class="icon">&#x2190;</span> <h1>Registrasi Instan Youthcard</h1>
-            <span class="icon">&#x1F4BE;</span> </div>
+            <span class="icon">&#x2190;</span> 
+            <h1>History Pembayaran Paylater</h1>
+            <span class="icon">&#x2699;</span> 
+        </div>
 
         <div class="content">
-            <h2 style="font-size: 1.4em; margin-top: 0; color: var(--mandiri-blue-dark);">Pindai KTM Anda untuk Verifikasi Data</h2>
-            
-            <div class="info-verifikasi">
-                &#x26A1; **Verifikasi Cepat:** Kami akan menarik data (NIM, Nama, Status Aktif) langsung dari sistem Kampus Mitra.
-                <span>Pastikan KTM tidak rusak dan pencahayaan cukup.</span>
+            <div class="summary-card">
+                <h2>Total Tagihan Aktif</h2>
+                <strong>Rp 750.000</strong>
+                <p style="font-size: 0.8em; opacity: 0.8;">Tagihan jatuh tempo: 25 November 2025</p>
+
+                <div class="summary-row">
+                    <span>Limit Tersedia</span>
+                    <span>Rp 4.250.000</span>
+                </div>
+                <div class="summary-row">
+                    <span>Limit Total</span>
+                    <span>Rp 5.000.000</span>
+                </div>
             </div>
 
-            <div class="scan-area">
-                <div class="scan-line"></div>
-                <span class="scan-icon">&#x1F4F8;</span> <p>Arahkan kamera ke bagian depan Kartu Tanda Mahasiswa (KTM)</p>
+            <div class="history-tabs">
+                <div class="history-tab-item active">Cicilan Aktif</div>
+                <div class="history-tab-item">Riwayat Pembayaran</div>
+                <div class="history-tab-item">Detail Transaksi</div>
             </div>
-            
-            <p style="font-size: 0.8em; color: var(--text-secondary); margin-top: var(--spacing-l);">
-                Dengan melanjutkan, Anda menyetujui pembukaan rekening Mandiri dan penggunaan data akademik untuk verifikasi.
-            </p>
+
+            <ul class="transaction-list">
+                <li class="transaction-item">
+                    <div class="trans-details">
+                        <span class="trans-icon-circle">&#x1F4C5;</span>
+                        <div class="trans-description">
+                            <p>Cicilan ke-3 dari 6 (Nov 2025)</p>
+                            <small>Sisa Pokok: Rp 700.000</small>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="trans-amount">Rp 375.000</div>
+                        <span class="status-badge status-tertunda">BELUM BAYAR</span>
+                    </div>
+                </li>
+                 <li class="transaction-item">
+                    <div class="trans-details">
+                        <span class="trans-icon-circle">&#x1F4C5;</span>
+                        <div class="trans-description">
+                            <p>Cicilan ke-2 dari 6 (Okt 2025)</p>
+                            <small>Pokok: Rp 350.000</small>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="trans-amount" style="color: #008000;">Rp 375.000</div>
+                        <span class="status-badge status-lunas">LUNAS</span>
+                    </div>
+                </li>
+                 <li class="transaction-item">
+                    <div class="trans-details">
+                        <span class="trans-icon-circle">&#x1F4C5;</span>
+                        <div class="trans-description">
+                            <p>Cicilan ke-1 dari 6 (Sep 2025)</p>
+                            <small>Pokok: Rp 350.000</small>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="trans-amount" style="color: #008000;">Rp 375.000</div>
+                        <span class="status-badge status-lunas">LUNAS</span>
+                    </div>
+                </li>
+            </ul>
         </div>
 
         <div class="footer-button">
-            <button class="btn-submit">Mulai Pindai KTM</button>
+            <button class="btn-bayar">Bayar Tagihan Sekarang</button>
         </div>
     </div>
 </body>
