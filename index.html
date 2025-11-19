@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>History Livin' Paylater</title>
+    <title>History Pembayaran UKT</title>
     <style>
         /* === TEMA & FONT === */
         :root {
@@ -67,76 +67,61 @@
             flex-grow: 1;
         }
 
-        /* === RINGKASAN PAYLATER (WIDGET BESAR) === */
-        .summary-card {
-            background: linear-gradient(135deg, var(--mandiri-blue-dark), #003a7a);
-            color: white;
+        /* === RINGKASAN AKADEMIK (WIDGET) === */
+        .academic-summary-card {
+            background-color: #e6f0ff;
+            border: 1px solid #d3e5ff;
             padding: var(--spacing-l);
             border-radius: var(--border-radius-m);
             margin-bottom: var(--spacing-l);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
-        .summary-card::after {
-            content: "PAYLATER";
-            position: absolute;
-            bottom: -15px;
-            right: 10px;
-            font-size: 3em;
-            font-weight: 900;
-            opacity: 0.1;
-            color: var(--mandiri-yellow);
-        }
-        .summary-card h2 {
-            font-size: 1.2em;
+        .academic-summary-card h2 {
+            font-size: 1.1em;
             margin-top: 0;
-            font-weight: 500;
-        }
-        .summary-card strong {
-            display: block;
-            font-size: 2em;
-            margin-bottom: var(--spacing-s);
-            color: var(--mandiri-yellow);
+            color: var(--mandiri-blue-dark);
+            border-bottom: 2px solid var(--mandiri-yellow);
+            padding-bottom: var(--spacing-xs);
+            display: inline-block;
         }
         .summary-row {
             display: flex;
             justify-content: space-between;
             font-size: 0.9em;
             margin-top: var(--spacing-s);
-            padding-top: var(--spacing-xs);
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-dark);
+        }
+        .summary-row strong {
+            color: #008000; /* Hijau untuk status baik */
         }
 
-        /* === TAB NAVIGASI HISTORY === */
-        .history-tabs {
+        /* === FILTER DAN SORTING === */
+        .filter-section {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: var(--spacing-m);
-            border-bottom: 2px solid #eee;
         }
-        .history-tab-item {
-            padding: var(--spacing-s) 0;
+        .filter-section select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius-m);
+            font-size: 0.85em;
+        }
+        .filter-section label {
             font-size: 0.9em;
-            color: var(--text-secondary);
+            color: var(--text-dark);
             font-weight: 600;
-            cursor: pointer;
-            position: relative;
-        }
-        .history-tab-item.active {
-            color: var(--mandiri-blue-dark);
-        }
-        .history-tab-item.active::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background-color: var(--mandiri-blue-dark);
         }
 
-        /* === DAFTAR TRANSAKSI/CICILAN === */
+
+        /* === DAFTAR TRANSAKSI UKT === */
+        .section-title {
+            font-size: 1em;
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: var(--spacing-s);
+        }
         .transaction-list {
             list-style: none;
             padding: 0;
@@ -147,6 +132,9 @@
             align-items: center;
             padding: var(--spacing-s) 0;
             border-bottom: 1px solid #eee;
+            margin-bottom: var(--spacing-xs);
+            background-color: white;
+            border-radius: var(--border-radius-m);
         }
         .transaction-item:last-child {
             border-bottom: none;
@@ -160,26 +148,29 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: #e6f0ff;
+            background-color: var(--mandiri-yellow); /* Ikon Pembayaran UKT */
             line-height: 40px;
             text-align: center;
-            font-size: 1.2em;
+            font-size: 1.4em;
             color: var(--mandiri-blue-dark);
         }
         .trans-description p {
             margin: 0;
             font-size: 0.9em;
             color: var(--text-dark);
-            font-weight: 500;
+            font-weight: 600;
         }
         .trans-description small {
             font-size: 0.8em;
             color: var(--text-secondary);
         }
+        .trans-amount-area {
+            text-align: right;
+        }
         .trans-amount {
             font-size: 0.9em;
             font-weight: 700;
-            color: #cc0000; /* Merah untuk pembayaran keluar */
+            color: var(--mandiri-blue-dark); 
         }
         .status-badge {
             font-size: 0.7em;
@@ -197,102 +188,84 @@
             color: #ff9900;
         }
 
-        /* === FOOTER ACTION === */
-        .footer-button {
-            padding: var(--spacing-m);
-            border-top: 1px solid #eee;
-            background-color: white;
-        }
-        .btn-bayar {
-            display: block;
-            width: 100%;
-            padding: var(--spacing-m);
-            background-color: var(--mandiri-yellow);
-            color: var(--mandiri-blue-dark);
-            border: none;
-            border-radius: 50px;
-            font-size: 1em;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
     </style>
 </head>
 <body>
     <div class="app-container">
         <div class="header">
             <span class="icon">&#x2190;</span> 
-            <h1>History Pembayaran Paylater</h1>
-            <span class="icon">&#x2699;</span> 
+            <h1>Riwayat Pembayaran UKT</h1>
+            <span class="icon">&#x1F4BE;</span> 
         </div>
 
         <div class="content">
-            <div class="summary-card">
-                <h2>Total Tagihan Aktif</h2>
-                <strong>Rp 750.000</strong>
-                <p style="font-size: 0.8em; opacity: 0.8;">Tagihan jatuh tempo: 25 November 2025</p>
-
+            <div class="academic-summary-card">
+                <h2>Ringkasan Pembayaran</h2>
                 <div class="summary-row">
-                    <span>Limit Tersedia</span>
-                    <span>Rp 4.250.000</span>
+                    <span>Perguruan Tinggi</span>
+                    <strong>Univ. Sumatera Utara (USU)</strong>
                 </div>
                 <div class="summary-row">
-                    <span>Limit Total</span>
-                    <span>Rp 5.000.000</span>
+                    <span>Total Semester Dibayar</span>
+                    <strong>5 Semester</strong>
+                </div>
+                <div class="summary-row">
+                    <span>Status Tagihan Berikutnya</span>
+                    <strong style="color: #cc0000;">Tertunda (Ganjil 2025)</strong>
                 </div>
             </div>
 
-            <div class="history-tabs">
-                <div class="history-tab-item active">Cicilan Aktif</div>
-                <div class="history-tab-item">Riwayat Pembayaran</div>
-                <div class="history-tab-item">Detail Transaksi</div>
+            <div class="filter-section">
+                <label>Tahun Akademik</label>
+                <select>
+                    <option>2025/2026</option>
+                    <option>2024/2025</option>
+                    <option>2023/2024</option>
+                </select>
             </div>
 
+            <h4 class="section-title">Riwayat Semester (Tahun 2024/2025)</h4>
             <ul class="transaction-list">
                 <li class="transaction-item">
                     <div class="trans-details">
-                        <span class="trans-icon-circle">&#x1F4C5;</span>
+                        <span class="trans-icon-circle">&#x1F393;</span>
                         <div class="trans-description">
-                            <p>Cicilan ke-3 dari 6 (Nov 2025)</p>
-                            <small>Sisa Pokok: Rp 700.000</small>
+                            <p>Semester Ganjil 2025/2026</p>
+                            <small>Jatuh Tempo: 20 November 2025</small>
                         </div>
                     </div>
-                    <div style="text-align: right;">
-                        <div class="trans-amount">Rp 375.000</div>
-                        <span class="status-badge status-tertunda">BELUM BAYAR</span>
+                    <div class="trans-amount-area">
+                        <div class="trans-amount" style="color: #cc0000;">Rp 4.500.000</div>
+                        <span class="status-badge status-tertunda">BELUM LUNAS</span>
                     </div>
                 </li>
                  <li class="transaction-item">
                     <div class="trans-details">
-                        <span class="trans-icon-circle">&#x1F4C5;</span>
+                        <span class="trans-icon-circle">&#x1F393;</span>
                         <div class="trans-description">
-                            <p>Cicilan ke-2 dari 6 (Okt 2025)</p>
-                            <small>Pokok: Rp 350.000</small>
+                            <p>Semester Genap 2024/2025</p>
+                            <small>Tanggal Pembayaran: 05 Maret 2025</small>
                         </div>
                     </div>
-                    <div style="text-align: right;">
-                        <div class="trans-amount" style="color: #008000;">Rp 375.000</div>
+                    <div class="trans-amount-area">
+                        <div class="trans-amount" style="color: #008000;">Rp 4.500.000</div>
                         <span class="status-badge status-lunas">LUNAS</span>
                     </div>
                 </li>
                  <li class="transaction-item">
                     <div class="trans-details">
-                        <span class="trans-icon-circle">&#x1F4C5;</span>
+                        <span class="trans-icon-circle">&#x1F393;</span>
                         <div class="trans-description">
-                            <p>Cicilan ke-1 dari 6 (Sep 2025)</p>
-                            <small>Pokok: Rp 350.000</small>
+                            <p>Semester Ganjil 2024/2025</p>
+                            <small>Tanggal Pembayaran: 10 September 2024</small>
                         </div>
                     </div>
-                    <div style="text-align: right;">
-                        <div class="trans-amount" style="color: #008000;">Rp 375.000</div>
+                    <div class="trans-amount-area">
+                        <div class="trans-amount" style="color: #008000;">Rp 4.500.000</div>
                         <span class="status-badge status-lunas">LUNAS</span>
                     </div>
                 </li>
             </ul>
-        </div>
-
-        <div class="footer-button">
-            <button class="btn-bayar">Bayar Tagihan Sekarang</button>
         </div>
     </div>
 </body>
